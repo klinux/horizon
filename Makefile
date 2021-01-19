@@ -13,5 +13,5 @@ up: ## execute container
 stop: ## stop container
 	docker-compose down
 
-cli: ## horizon cli
-	docker build -t horizon-cli -f Dockerfile-cli .
+prod: ## horizon prod
+	docker build -t horizon-cloudwise -f Dockerfile-prod .
