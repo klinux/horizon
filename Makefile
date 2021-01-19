@@ -6,13 +6,15 @@ help:
 # DOCKER TASKS
 dev: ## build image
 	docker build -t horizon .
+	docker-compose -f docker-file-dev up
 
 up: ## execute dev
 	docker-compose up
 
 down: ## stop dev
 	docker-compose down
+	docker-compose -f docker-file-dev down
 
 prod: ## horizon prod
-	docker build -t horizon-cloudwise -f Dockerfile-prod .
+	docker build --no-cache --rm -t horizon-cloudwise -f Dockerfile-prod .
 

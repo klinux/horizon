@@ -33,8 +33,6 @@ RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git 
 
 RUN mv local_settings_prod.py openstack_dashboard/local/local_settings.py
 
-RUN pip install django-compressor>=2.1
-
 RUN ./manage.py compilemessages && \
     ./manage.py collectstatic --noinput && \
     ./manage.py compress && \
