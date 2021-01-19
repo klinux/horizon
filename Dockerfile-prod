@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM centos:centos7
 
 ENV HORIZON_BASEDIR=/opt/horizon \
     APACHE_RUN_USER=www-data \
@@ -13,38 +13,31 @@ ENV HORIZON_BASEDIR=/opt/horizon \
 EXPOSE 80
 
 RUN \
-  apt-get update && \
-  apt-get upgrade -y && \
-  apt-get install -y \
-    apache2 libapache2-mod-wsgi-py3 python3-pip python3-dev git gcc libnss3-dev pkg-config gettext
+  yum upgrade -y && \
+  yum install -y \
+    httpd python3-mod_wsgi python3-pip python3-devel git-core gcc openssl-devel libffi-devel which pkg-config gettext
 
-RUN ln -s /usr/bin/python3 /usr/bin/python && \
-    ln -s /usr/bin/pip3 /usr/bin/pip
-
-RUN pip install --upgrade pip && \
-    pip install python-memcached && \
-    pip install django-widget-tweaks
+RUN pip3 install --upgrade pip && \
+    pip3 install python-memcached && \
+    pip3 install django-widget-tweaks
 
 WORKDIR ${HORIZON_BASEDIR}
 
-RUN echo ls
-
 RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
-    pip install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=${VERSION} -r requirements.txt
+    pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=${VERSION} -r requirements.txt
 
 RUN mv local_settings_prod.py openstack_dashboard/local/local_settings.py
 
-RUN ./manage.py compilemessages && \
-    ./manage.py collectstatic --noinput && \
-    ./manage.py compress && \
-    ./manage.py make_web_conf --wsgi
+RUN python3 manage.py compilemessages && \
+    python3 manage.py collectstatic --noinput && \
+    python3 manage.py compress && \
+    python3 manage.py make_web_conf --wsgi
 
-RUN rm -rf /etc/apache2/sites-enabled/* && \
-    python -m compileall $HORIZON_BASEDIR
+RUN rm -rf /etc/httpd/httpd.conf/* && \
+    python3 -m compileall $HORIZON_BASEDIR
 
-COPY wsgi.conf /etc/apache2/sites-enabled/horizon.conf
+COPY wsgi.conf /etc/httpd/conf.d/horizon.conf
 
-RUN apt-get remove -y git gcc libnss3-dev python3-dev && \
-    apt-get autoremove -y
+RUN yum remove -y python3-devel git-core gcc openssl-devel libffi-devel
 
-CMD /usr/sbin/apache2 -DFOREGROUND
+CMD /usr/sbin/httpd -DFOREGROUND
