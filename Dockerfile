@@ -1,8 +1,7 @@
 FROM python:3.5.10-slim
 
 RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y git gcc nodejs npm
+    apt-get install -y git gcc
 
 RUN pip install --upgrade pip
 

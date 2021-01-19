@@ -4,14 +4,15 @@ help:
 .DEFAULT_GOAL := help
 
 # DOCKER TASKS
-build: ## build image
+dev: ## build image
 	docker build -t horizon .
 
-up: ## execute container
+up: ## execute dev
 	docker-compose up
 
-stop: ## stop container
+down: ## stop dev
 	docker-compose down
 
 prod: ## horizon prod
 	docker build -t horizon-cloudwise -f Dockerfile-prod .
+

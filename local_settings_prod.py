@@ -134,8 +134,7 @@ TIME_ZONE = "UTC"
 POLICY_FILES_PATH = '/etc/openstack-dashboard'
 
 AVAILABLE_THEMES = [
-    ('default', 'Default', 'themes/default'),
-    ('material', 'Material', 'themes/material'),
+    ('default', 'Default', 'themes/cloudwise')
 ]
 
 LOGGING = {

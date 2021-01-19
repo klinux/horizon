@@ -9,3 +9,9 @@ services:
       ports:
         - 5000:5000
 
+  horizon-prod:
+      image: horizon-cloudwise
+      volumes:
+        - ./local_settings_prod.py:/opt/horizon/openstack_dashboard/local/local_settings.py:ro
+      ports:
+        - 8000:80
