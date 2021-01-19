@@ -38,7 +38,7 @@ RUN ./manage.py compilemessages && \
     ./manage.py make_web_conf --wsgi
 
 RUN rm -rf /etc/apache2/sites-enabled/* && \
-    python -m compileall $HORIZON_BASEDIR && \
+    python -m compileall $HORIZON_BASEDIR
 
 COPY wsgi.conf /etc/apache2/sites-enabled/horizon.conf
 
