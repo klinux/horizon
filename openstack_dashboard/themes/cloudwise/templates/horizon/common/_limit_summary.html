@@ -1,0 +1,52 @@
+{% load i18n horizon %}
+
+{% spaceless %}
+<div class="quota-dynamic limit-summary">
+  <div class="block-header">
+    <h2>
+      {% trans "Limit Summary" %}
+    </h2>
+  </div>
+  {% for section in charts %}
+  {% for chart in section.charts %}
+  {% if forloop.first or forloop.counter0|divisibleby:6 %}
+  <div class="row clearfix">
+    {% endif %}
+    <div class="d3_quota_bar col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="header">
+          <h2>
+            {{ section.title }} <small>{{ section.title }} - {{ chart.name }} status</small>
+          </h2>
+        </div>
+        <div class="body">
+          <div style="display:inline;width:135px;height:135px;">
+            <canvas width="135" height="135"></canvas>
+            <input type="text" class="knob" data-skin="tron" value="{% quotapercent chart.used chart.quota %}"
+              data-width="135" data-height="135" data-thickness="0.2" readonly="readonly" data-anglearc="250" data-angleoffset="-125"
+              data-fgcolor="#9C27B0"
+              style="width: 71px; height: 45px; position: absolute; vertical-align: middle; margin-top: 45px; margin-left: -103px; border: 0px none; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; font: bold 27px Arial; text-align: center; color: rgb(156, 39, 176); padding: 0px; appearance: none;">
+          </div>
+          <div class="quota_subtitle">
+            {% if chart.quota|quotainf != '-1' %}
+            {% blocktrans trimmed with usedphrase=chart.text used=chart.used_display available=chart.quota_display %}
+            {{ usedphrase }} {{ used }} of {{ available }}
+            {% endblocktrans %}
+            {% else %}
+            {% blocktrans trimmed with usedphrase=chart.text used=chart.used_display %}
+            {{ usedphrase }} {{ used }} (No Limit)
+            {% endblocktrans %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if forloop.last or forloop.counter|divisibleby:6 %}
+    {% if not forloop.first %}
+  </div>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</div>
+{% endspaceless %}

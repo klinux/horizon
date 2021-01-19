@@ -1,7 +1,7 @@
 <div class="ng-wizard" ng-form="wizardForm">
   <div class="modal-header">
     <button type="button" class="close" ng-click="cancel()" aria-hidden="true" aria-label="Close">
-      <span aria-hidden="true" class="fa fa-close"></span>
+      <i class="far fa-times-circle"></i>
     </button>
     <span class="h4 modal-title" ng-bind="::workflow.title"></span>
   </div>
@@ -62,7 +62,7 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-default pull-left"
       ng-click="cancel()">
-      <span ng-class="::viewModel.btnIcon.cancel||'fa fa-close'"></span>
+      <span ng-class="::viewModel.btnIcon.cancel||'far fa-times-circle'"></span>
       <span ng-bind="::viewModel.btnText.cancel"></span>
     </button>
 
@@ -70,7 +70,7 @@
       ng-click="switchTo(currentIndex - 1)"
       ng-disabled="currentIndex===0"
       ng-show="steps.length > 1">
-      <span ng-class="::viewModel.btnIcon.back||'fa fa-angle-left'"></span>
+      <span ng-class="::viewModel.btnIcon.back||'fas fa-angle-left'"></span>
       <span ng-bind="::viewModel.btnText.back"></span>
     </button>
 
@@ -79,14 +79,14 @@
       ng-disabled="currentIndex===steps.length - 1"
       ng-show="steps.length > 1">
       <span ng-bind="::viewModel.btnText.next"></span>
-      <span ng-class="::viewModel.btnIcon.next||'fa fa-angle-right'"></span>
+      <span ng-class="::viewModel.btnIcon.next||'fas fa-angle-right'"></span>
     </button>
 
     <button type="button" class="btn btn-primary finish"
       ng-click="viewModel.onClickFinishBtn()"
       ng-disabled="wizardForm.$invalid||viewModel.isSubmitting">
       <span class="fa"
-        ng-class="viewModel.isSubmitting ? 'fa-spinner fa-spin' : 
+        ng-class="viewModel.isSubmitting ? 'fa-circle-notch fa-spin' : 
           (viewModel.btnIcon.finish || 'fa-check')">
       </span>
       <span ng-bind="::viewModel.btnText.finish"></span>

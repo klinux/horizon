@@ -1,14 +1,14 @@
 {% spaceless %}
-  <ol class="breadcrumb">
+  <ol class="breadcrumb breadcrumb-col-indigo">
     {% for name, target in breadcrumb %}
       {% if forloop.last %}
-        <li class="breadcrumb-item-truncate active">{{ name }}</li>
+      <li class="active"><a href="javascript:void(0);">{{ name }}</a></li>
       {% elif target %}
-        <li class="breadcrumb-item-truncate">
+        <li class="">
           <a href="{{ target }}">{{ name }}</a>
         </li>
       {% else %}
-        <li class="breadcrumb-item-truncate">{{ name }}</li>
+      <li class=""><a href="javascript:void(0);">{{ name }}</a></li>
       {% endif %}
     {% endfor %}
   </ol>

@@ -1,0 +1,14 @@
+FROM python:3.5.10-slim
+
+WORKDIR /app
+
+RUN \
+  apt update && \
+  apt install -y \
+    git gcc
+
+RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git /app
+  
+RUN pip install --upgrade pip && \
+    pip install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein . && \
+    pip install python-memcached

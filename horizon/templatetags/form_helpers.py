@@ -43,6 +43,11 @@ def autocomplete(field, value='on'):
 
 
 @register.filter
+def is_select(field):
+    return isinstance(field.field.widget, django.forms.Select)
+
+
+@register.filter
 def is_checkbox(field):
     return isinstance(field.field.widget, django.forms.CheckboxInput)
 

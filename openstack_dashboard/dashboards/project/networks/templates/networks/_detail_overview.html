@@ -1,5 +1,7 @@
 {% load i18n sizeformat %}
 
+<div class="card">
+  <div class="body">
 <div class="info detail">
   <dl class="dl-horizontal">
     <dt title="{% trans 'Name' %}">{% trans "Name" %}</dt>
@@ -25,4 +27,6 @@
     <dd>{% trans "Segmentation ID:" %} {{ network.provider__segmentation_id|default:_("-") }}</dd>
     {% endif %}
   </dl>
+</div>
+</div>
 </div>

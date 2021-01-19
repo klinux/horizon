@@ -192,6 +192,7 @@ INSTALLED_APPS = [
     'compressor',
     'horizon',
     'openstack_auth',
+    'widget_tweaks',
 ]
 
 AUTHENTICATION_BACKENDS = ('openstack_auth.backend.KeystoneBackend',)

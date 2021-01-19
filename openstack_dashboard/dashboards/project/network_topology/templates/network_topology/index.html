@@ -13,8 +13,10 @@
 {% include "project/network_topology/client_side/_balloon_port.html" %}
 {% include "project/network_topology/client_side/_balloon_net.html" %}
 {% include "project/network_topology/client_side/_balloon_instance.html" %}
-
+<div class="card">
+  <div class="body">
 {% include 'project/network_topology/_actions_list.html' %}
+
 <div class="row">
   <div class="col-sm-12">
     {{ tab_group.render }}
@@ -53,3 +55,5 @@
   }
 </script>
 {% endblock %}
+</div>
+</div>

@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  horizon:
+      image: horizon
+      entrypoint: tox -e runserver 0.0.0.0:5000
+      volumes:
+        - ./:/app/
+      ports:
+        - 5000:5000
+

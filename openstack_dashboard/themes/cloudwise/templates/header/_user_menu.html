@@ -1,0 +1,61 @@
+{% load i18n %}
+{% load themes %}
+
+{% if not_list %}
+<div class="dropdown user-menu">
+  {% else %}
+  <li class="dropdown user-menu">
+    {% endif %}
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+      <i class="material-icons">more_vert</i>
+    </a>
+    <ul id="editor_list" class="dropdown-menu dropdown-menu-right selection-menu">
+      {% if HORIZON_CONFIG.bug_url %}
+      <li>
+        <a href="{{ HORIZON_CONFIG.bug_url }}" target="_blank">
+          <i class="material-icons">bug_report</i>
+          {% trans "Report Bug" %}
+        </a>
+      </li>
+      {% endif %}
+      {% if HORIZON_CONFIG.help_url %}
+      <li>
+        <a href="{{ HORIZON_CONFIG.help_url }}" target="_blank">
+          <i class="material-icons">help_outline</i>
+          {% trans "Help" %}
+        </a>
+      </li>
+      {% endif %}
+
+      {% for link in USER_MENU_LINKS %}
+      <li>
+        {% if link.external %}
+        <a href="{{ link.url }}">
+          {% else %}
+          <a href="{% url link.url %}">
+            {% endif %}
+
+            {% if link.icon_classes %}
+            <span class="fa {{ link.icon_classes | join:" "}}"></span>
+            {% else %}
+            <i class="material-icons">get_app</i>
+            {% endif %}
+            {{ link.name }}
+          </a>
+
+      </li>
+      {% endfor %}
+
+      {% themes as available_themes %}
+      {% if available_themes and available_themes|length > 1 %}
+      <li class="divider"></li>
+      <li>
+        {% include 'header/_theme_list.html' %}
+      </li>
+      {% endif %}
+    </ul>
+    {% if not_list %}
+</div>
+{% else %}
+</li>
+{% endif %}

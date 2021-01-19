@@ -1,28 +1,33 @@
 <div ng-controller="LaunchInstanceDetailsController as ctrl">
-  <p class="step-description" translate>Please provide the initial hostname for the instance, the availability zone where it will be deployed, and the instance count.
+  <p class="step-description" translate>Please provide the initial hostname for the instance, the availability zone
+    where it will be deployed, and the instance count.
     Increase the Count to create multiple instances with the same settings.</p>
 
   <div class="row">
     <div class="col-xs-12 col-sm-8">
       <div class="form-group"
-         ng-class="{ 'has-error': launchInstanceDetailsForm.name.$invalid && launchInstanceDetailsForm.name.$dirty }">
+        ng-class="{ 'has-error': launchInstanceDetailsForm.name.$invalid && launchInstanceDetailsForm.name.$dirty }">
         <label for="name" class="control-label">
           <translate>Instance Name</translate>
           <span class="hz-icon-required fa fa-asterisk"></span>
         </label>
-        <input id="name" name="name" type="text" class="form-control"
-               ng-model="model.newInstanceSpec.name" ng-required="true">
+        <div class="form-line">
+          <input id="name" name="name" type="text" class="form-control" ng-model="model.newInstanceSpec.name"
+            ng-required="true">
+        </div>
 
-          <span class="help-block"
-                ng-show="launchInstanceDetailsForm.name.$invalid && launchInstanceDetailsForm.name.$dirty">
-            {$ ctrl.instanceNameError $}
-          </span>
+        <span class="help-block"
+          ng-show="launchInstanceDetailsForm.name.$invalid && launchInstanceDetailsForm.name.$dirty">
+          {$ ctrl.instanceNameError $}
+        </span>
       </div>
 
       <div ng-if="ctrl.isDescriptionSupported" class="form-group">
         <label class="control-label" translate for="description">Description</label>
-        <input id="description" name="description" type="text" class="form-control"
-               ng-model="model.newInstanceSpec.description">
+        <div class="form-line">
+          <input id="description" name="description" type="text" class="form-control"
+            ng-model="model.newInstanceSpec.description">
+        </div>
       </div>
 
       <div class="form-group">
@@ -32,14 +37,12 @@
             <div class="progress-bar"></div>
           </div>
         </div>
-        <div class="alert alert-warning"
-             ng-if="model.loaded.availabilityZones && model.availabilityZones.length === 0"
-             translate>There are no Availability Zones.</div>
+        <div class="alert alert-warning" ng-if="model.loaded.availabilityZones && model.availabilityZones.length === 0"
+          translate>There are no Availability Zones.</div>
         <select ng-if="model.loaded.availabilityZones && model.availabilityZones.length !== 0"
-                class="form-control"
-                id="availability-zone"
-                ng-options="zone.value as zone.label for zone in model.availabilityZones"
-                ng-model="model.newInstanceSpec.availability_zone">
+          class="form-control bootstrap-select" id="availability-zone"
+          ng-options="zone.value as zone.label for zone in model.availabilityZones"
+          ng-model="model.newInstanceSpec.availability_zone">
         </select>
       </div>
 
@@ -48,13 +51,15 @@
           <translate>Count</translate>
           <span class="hz-icon-required fa fa-asterisk"></span>
         </label>
-        <input id="instance-count" name="count" type="number" class="form-control" min="1"
-               ng-model="model.newInstanceSpec.instance_count"
-               ng-required="true" ng-pattern="/^[0-9]+$/"
-               validate-number-min="1"
-               validate-number-max="{$ ctrl.maxInstanceCount $}">
+        <div class="form-line">
+          <input id="instance-count" name="count" type="number" class="form-control" min="1"
+            ng-model="model.newInstanceSpec.instance_count" ng-required="true" ng-pattern="/^[0-9]+$/"
+            validate-number-min="1" validate-number-max="{$ ctrl.maxInstanceCount $}">
+        </div>
+
         <span class="help-block" ng-show="launchInstanceDetailsForm.count.$invalid">
-          {$ launchInstanceDetailsForm.count.$error.validateNumberMax ? ctrl.instanceCountMaxError : ctrl.instanceCountError $}
+          {$ launchInstanceDetailsForm.count.$error.validateNumberMax ? ctrl.instanceCountMaxError :
+          ctrl.instanceCountError $}
         </span>
       </div>
     </div>
