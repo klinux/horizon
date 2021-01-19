@@ -8,6 +8,13 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 WEBROOT = '/'
 ALLOWED_HOSTS = ['*']
+SITE_BRANDING = 'Cloudwise System'
+COMPRESS_OFFLINE = True
+
+COMPRESS_PRECOMPILERS = (
+    ('text/javascript', 'uglifyjs {infile} --output {outfile}'),
+    ('text/scss', 'horizon.utils.scss_filter.HorizonScssFilter'),
+)
 
 OPENSTACK_API_VERSIONS = {
     "identity": 3,
@@ -19,13 +26,16 @@ OPENSTACK_API_VERSIONS = {
 LOCAL_PATH = '/tmp'
 
 SECRET_KEY='338e8547026b098129d1'
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': ['192.168.0.100:11211'],
     }
 }
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 OPENSTACK_HOST = "192.168.0.100"
 OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
@@ -50,12 +60,12 @@ OPENSTACK_KEYSTONE_BACKEND = {
     'can_edit_role': True,
 }
 OPENSTACK_HYPERVISOR_FEATURES = {
-    'can_set_mount_point': False,
-    'can_set_password': False,
-    'requires_keypair': False,
+    'can_set_mount_point': True,
+    'can_set_password': True,
+    'requires_keypair': True,
 }
 OPENSTACK_CINDER_FEATURES = {
-    'enable_backup': False,
+    'enable_backup': True,
 }
 OPENSTACK_NEUTRON_NETWORK = {
     'enable_router': True,
@@ -131,10 +141,10 @@ DROPDOWN_MAX_ITEMS = 30
 
 TIME_ZONE = "UTC"
 
-POLICY_FILES_PATH = '/etc/openstack-dashboard'
+# POLICY_FILES_PATH = '/etc/openstack-dashboard'
 
 AVAILABLE_THEMES = [
-    ('default', 'Default', 'themes/cloudwise')
+    ('cloudwise', 'CloudWise', 'themes/cloudwise'),
 ]
 
 LOGGING = {
