@@ -1,6 +1,7 @@
-FROM debian:stretch
+FROM python:3.5-slim
 
 ENV HORIZON_BASEDIR=/opt/horizon \
+    KEYSTONE_URL='http://192.168.0.100:5000/v3' \
     APACHE_RUN_USER=www-data \
     APACHE_RUN_GROUP=www-data \
     APACHE_PID_FILE=/var/run/apache2/apache2.pid \
@@ -16,13 +17,15 @@ RUN \
   apt-get update && \
   apt-get upgrade -y && \
   apt-get install -y \
-    apache2 libapache2-mod-wsgi \
-    python-pip python-dev git
+    apache2 libapache2-mod-wsgi git
 
 RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR}
 
-RUN cd ${HORIZON_BASEDIR} && \
-    pip -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein . && \
+WORKDIR ${HORIZON_BASEDIR}
+
+RUN pip install --upgrade pip
+
+RUN pip install -c upper-constraints.txt . && \
     pip install python-memcached django-widget-tweaks
 
 RUN cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py && \
