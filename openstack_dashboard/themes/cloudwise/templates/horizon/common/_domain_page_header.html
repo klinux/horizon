@@ -1,11 +1,12 @@
 {% load i18n %}
 {% block page_header %}
-  <div class='page-header'>
-    <h1>
+<div class="block-header">
+  <h1>
+    <i class="fas fa-border-all"></i>
     {% if request.session.domain_context_name %}
-      <em>{% blocktrans with context_name=request.session.domain_context_name %}{{ context_name }}:{% endblocktrans %}</em>
+    <em>{% blocktrans with context_name=request.session.domain_context_name %}{{ context_name }}:{% endblocktrans %}</em>
     {% endif %}
     {{ title }}
-    </h1>
-  </div>
+  </h1>
+</div>
 {% endblock %}
