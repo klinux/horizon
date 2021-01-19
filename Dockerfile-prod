@@ -17,24 +17,27 @@ RUN \
   apt-get update && \
   apt-get upgrade -y && \
   apt-get install -y \
-    apache2 libapache2-mod-wsgi-py3 python3-pip python3-dev git gcc libnss3-dev pkg-config gettext uglifyjs
+    apache2 libapache2-mod-wsgi-py3 python3-pip python3-dev git gcc libnss3-dev pkg-config gettext
 
-RUN pip3 install --upgrade pip && \
-    pip3 install python-memcached && \
-    pip3 install django-widget-tweaks
+RUN ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip
+
+RUN pip install --upgrade pip && \
+    pip install python-memcached && \
+    pip install django-widget-tweaks
 
 WORKDIR ${HORIZON_BASEDIR}
 
 RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
-    pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=${VERSION} -r requirements.txt
+    pip install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=${VERSION} -r requirements.txt
 
 RUN mv local_settings_prod.py openstack_dashboard/local/local_settings.py
 
-RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN pip install django-compressor>=2.1
 
 RUN ./manage.py compilemessages && \
     ./manage.py collectstatic --noinput && \
-    ./manage.py compress --force && \
+    ./manage.py compress && \
     ./manage.py make_web_conf --wsgi
 
 RUN rm -rf /etc/apache2/sites-enabled/* && \

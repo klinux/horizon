@@ -11,10 +11,7 @@ ALLOWED_HOSTS = ['*']
 SITE_BRANDING = 'Cloudwise System'
 COMPRESS_OFFLINE = True
 
-COMPRESS_PRECOMPILERS = (
-    ('text/javascript', 'uglifyjs {infile} --output {outfile}'),
-    ('text/scss', 'horizon.utils.scss_filter.HorizonScssFilter'),
-)
+COMPRESS_PRECOMPILERS = ()
 
 OPENSTACK_API_VERSIONS = {
     "identity": 3,
