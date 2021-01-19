@@ -1,7 +1,6 @@
 FROM python:3.5-slim
 
 ENV HORIZON_BASEDIR=/opt/horizon \
-    KEYSTONE_URL='http://192.168.0.100:5000/v3' \
     APACHE_RUN_USER=www-data \
     APACHE_RUN_GROUP=www-data \
     APACHE_PID_FILE=/var/run/apache2/apache2.pid \
@@ -24,8 +23,6 @@ RUN pip install --upgrade pip
 RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR}
 
 WORKDIR ${HORIZON_BASEDIR}
-
-RUN rm -f openstack_dashboard/local/local_settings.py
 
 RUN pip install -c upper-constraints.txt . && \
     pip install python-memcached django-widget-tweaks
