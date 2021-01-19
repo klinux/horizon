@@ -4,6 +4,7 @@
 {% load themes %}
 {% load cache %}
 {% load angular_templates from angular %}
+{% theme_dir as theme_dir %}
 
 {% compress js %}
 <script src='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/node-waves/waves.min.js'></script>
