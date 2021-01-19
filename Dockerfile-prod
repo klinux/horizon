@@ -9,7 +9,7 @@ ENV HORIZON_BASEDIR=/opt/horizon \
     APACHE_LOCK_DIR=/var/lock/apache2 \
     APACHE_LOG_DIR=/var/log/apache2 \
     LANG=C \
-    VERSION=stable/cloudwise
+    VERSION=stable/stein
 
 EXPOSE 80
 
@@ -25,8 +25,7 @@ RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git 
 
 WORKDIR ${HORIZON_BASEDIR}
 
-RUN rm -f openstack_dashboard/local/local_settings.py && \
-    rm -rf .git
+RUN rm -f openstack_dashboard/local/local_settings.py
 
 RUN pip install -c upper-constraints.txt . && \
     pip install python-memcached django-widget-tweaks
