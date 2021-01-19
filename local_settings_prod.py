@@ -11,8 +11,6 @@ ALLOWED_HOSTS = ['*']
 SITE_BRANDING = 'Cloudwise System'
 COMPRESS_OFFLINE = True
 
-COMPRESS_PRECOMPILERS = ()
-
 OPENSTACK_API_VERSIONS = {
     "identity": 3,
     "image": 2,
