@@ -16,5 +16,5 @@ down: ## stop dev
 	docker-compose -f docker-file-dev down
 
 prod: ## horizon prod
-	docker build --no-cache --rm -t horizon-cloudwise -f Dockerfile-prod .
+	docker build --rm -t horizon-cloudwise -f Dockerfile-prod .
 
