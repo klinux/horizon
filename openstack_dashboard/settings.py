@@ -333,6 +333,10 @@ AVAILABLE_THEMES = [
         'material',
         pgettext_lazy("Google's Material Design style theme", "Material"),
         'themes/material'
+    ), (
+        'cloudwise',
+        'CloudWise', 
+        'themes/cloudwise'
     ),
 ]
 
