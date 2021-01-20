@@ -19,7 +19,7 @@ RUN pip install --upgrade pip && \
 
 WORKDIR ${HORIZON_BASEDIR}
 
-RUN echo ls 4
+RUN echo ls 5
 
 RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip install -I -c https://releases.openstack.org/constraints/upper/stein \

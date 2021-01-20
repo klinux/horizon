@@ -1,6 +1,5 @@
 // My Themes
 @import "/{{ THEME_DIR }}/{{ THEME }}/variables";
-@import "/{{ THEME_DIR }}/cloudwise/horizon/fontawesome/scss/variables";
 
 // Horizon
 //@import "/dashboard/scss/horizon.scss";
@@ -15,6 +14,7 @@
 @import "/dashboard/scss/util";
 
 @import "/horizon/lib/bootstrap_scss/scss/bootstrap";
+@import "/horizon/lib/font_awesome/scss/font-awesome.scss";
 
 // Horizion Dashboard Components
 @import "/dashboard/scss/components/bar_charts";
