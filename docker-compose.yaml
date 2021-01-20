@@ -4,6 +4,6 @@ services:
   horizon:
       image: horizon-cloudwise
       volumes:
-        - ./local_settings_prod.py:/opt/horizon/openstack_dashboard/local/local_settings.py:ro
+        - ./local_settings.py:/opt/horizon/openstack_dashboard/local/local_settings.py:ro
       ports:
         - 8000:80

@@ -5,16 +5,18 @@ help:
 
 # DOCKER TASKS
 dev: ## build image
-	docker build -t horizon .
-	docker-compose -f docker-file-dev up
+	docker build -t horizon -f Dockerfile-dev .
+	docker-compose -f docker-compose-dev.yaml up
 
-up: ## execute dev
+stopd: ## stop dev
+	docker-compose -f docker-compose-dev.yaml down
+
+hom: ## execute hom
 	docker-compose up
 
-down: ## stop dev
+stoph: ## stop hom
 	docker-compose down
-	docker-compose -f docker-file-dev down
 
-prod: ## horizon prod
-	docker build --rm -t horizon-cloudwise -f Dockerfile-prod .
+image: ## horizon prod
+	docker build --no-cache --rm -t horizon-cloudwise .
 

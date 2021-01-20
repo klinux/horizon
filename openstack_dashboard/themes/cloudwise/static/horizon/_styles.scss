@@ -1,20 +1,19 @@
-@import 'components/_mixins';
-
+@import "components/_mixins";
 
 /* General ===================================== */
-@import 'components/_general';
+@import "components/_general";
 
 /* Card ======================================== */
-@import 'components/_card';
+@import "components/_card";
 
 /* Navbar ====================================== */
-@import 'components/_navbar';
+@import "components/_navbar";
 
 /* Material Icons ============================== */
-@import 'components/materialicons';
+@import "components/materialicons";
 
 /* Helpers ===================================== */
-@import 'components/_helpers';
+@import "components/_helpers";
 
 /* Custom Animate ============================== */
 //@import 'components/_customanimate';
@@ -47,7 +46,7 @@
 //@import 'components/_dialogs';
 
 /* Checkbox & Radio ============================ */
-@import 'components/_checkboxradio';
+@import "components/_checkboxradio";
 
 /* Switch ====================================== */
 //@import 'components/_switch';
@@ -98,7 +97,7 @@
 //@import 'components/_dropzone';
 
 /* Breadcrumbs ================================= */
-@import 'components/_breadcrumbs';
+@import "components/_breadcrumbs";
 
 /* Badge | List Group Item ===================== */
 //@import 'components/_badgelistgroupitem';
@@ -113,7 +112,7 @@
 //@import 'components/_formwizard';
 
 /* Waves ======================================= */
-@import 'components/_waveseffect';
+@import "components/_waveseffect";
 
 /* Page Loader ================================= */
 //@import 'components/_pageloader';
@@ -125,7 +124,7 @@
 //@import 'components/_dropdownmenu';
 
 /* Left Sidebar & Overlay ====================== */
-@import 'components/_leftsidebaroverlay';
+@import "components/_leftsidebaroverlay";
 
 /* Bootstrap Notify ============================ */
 //@import 'components/_bootstrapnotify';
@@ -134,44 +133,43 @@
 //@import 'components/_jquerynestable';
 
 /* Login Page ================================== */
-@import 'components/pages/_loginpage';
+@import "components/pages/_loginpage";
 
 /* Sign Up Page ================================ */
-@import 'components/pages/_signuppage';
+@import "components/pages/_signuppage";
 
 /* Forgot Password Page ======================== */
-@import 'components/pages/_forgotpasswordpage';
+@import "components/pages/_forgotpasswordpage";
 
 /* 404 Not Found Page ========================== */
-@import 'components/pages/_404';
+@import "components/pages/_404";
 
 /* 500 Server Error Page ======================= */
-@import 'components/pages/_500';
+@import "components/pages/_500";
 
 /* Profile Page ================================ */
-@import 'components/pages/_profile';
+@import "components/pages/_profile";
 
 /* Maps ======================================== */
 //@import 'components/_maps';
 
 /* Charts ====================================== */
-@import 'components/_charts';
+@import "components/_charts";
 
 /* Searchbar =================================== */
 //@import 'components/_searchbar';
 
 /* Jquery DataTable ============================ */
-@import 'components/_jquerydatatable';
+@import "components/_jquerydatatable";
 
 /* Light Gallery ================================ */
 //@import 'components/_lightgallery';
 
 /* For Internet Explorer 10 ===================== */
-@import 'components/browser-support/_ie10';
+@import "components/browser-support/_ie10";
 
 /* For Internet Explorer 11 ===================== */
-@import 'components/browser-support/_ie11';
+@import "components/browser-support/_ie11";
 
 /* Help Panel ================================= */
-@import 'components/_help_panel';
-
+@import "components/_help_panel";
