@@ -22,12 +22,12 @@ LOCAL_PATH = '/tmp'
 
 # POLICY_FILES_PATH = '/etc/openstack-dashboard'
 
-DEFAULT_THEME = 'default'
+DEFAULT_THEME = 'cloudwise'
 
 AVAILABLE_THEMES = [
     ('default', 'Default', 'themes/default'),
     ('material', 'Material', 'themes/material'),
-    ('cloudwise', 'CloudWise', 'themes/cloudwise')
+    ('cloudwise', 'CloudWise', 'themes/cloudwise'),
 ]
 
 OPENSTACK_PROFILER = {
