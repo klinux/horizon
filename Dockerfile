@@ -20,7 +20,7 @@ RUN pip3 install --upgrade pip && \
 WORKDIR ${HORIZON_BASEDIR}
 
 RUN git clone --branch $VERSION --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
-    pip3 install -I -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=${VERSION} \
+    pip3 install -I -c https://releases.openstack.org/constraints/upper/stein \
     -r requirements.txt
 
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py

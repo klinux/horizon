@@ -18,5 +18,5 @@ stoph: ## stop hom
 	docker-compose down
 
 image: ## horizon prod
-	docker build --no-cache --rm -t horizon-cloudwise .
+	docker build --rm -t horizon-cloudwise .
 
