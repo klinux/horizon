@@ -22,10 +22,11 @@ LOCAL_PATH = '/tmp'
 
 # POLICY_FILES_PATH = '/etc/openstack-dashboard'
 
-DEFAULT_THEME = 'cloudwire'
+DEFAULT_THEME = 'default'
 
 AVAILABLE_THEMES = [
     ('default', 'Default', 'themes/default'),
+    ('material', 'Material', 'themes/material'),
     ('cloudwise', 'CloudWise', 'themes/cloudwise')
 ]
 
