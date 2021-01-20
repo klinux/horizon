@@ -8,7 +8,6 @@
 {% endcompress %}
 
 {% current_theme as current_theme %}
-{% theme_dir as theme_dir %}
 
 {% comment %}
 The following 'include' is used to allow all scss files to share the same variable namespace
@@ -18,6 +17,7 @@ If you wish to add new scss files, it is recommended that you add them from with
 themes/themes.scss template file.
 {% endcomment %}
 
+{% theme_dir as theme_dir %}
 <link href='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/jquery-spinner/css/bootstrap-spinner.min.css' type='text/css' rel="stylesheet" />
 <link href='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/materialize/css/materialize.css' type='text/css' rel='stylesheet' />
 <link href='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/node-waves/waves.min.css' type='text/css' rel='stylesheet' />
