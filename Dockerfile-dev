@@ -10,3 +10,4 @@ RUN pip install django-widget-tweaks
 WORKDIR /app
 
 RUN pip install tox
+
