@@ -169,9 +169,10 @@ COMPRESS_PRECOMPILERS = (
     ('text/scss', 'horizon.utils.scss_filter.HorizonScssFilter'),
 )
 
-COMPRESS_CSS_FILTERS = (
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
+COMPRESS_FILTERS = (
+    ('css', 'compressor.filters.css_default.CssAbsoluteFilter'),
+    ('css', 'compressor.filters.cssmin.CSSMinFilter'),
+    ('js', 'compressor.filters.jsmin.JSMinFilter'),
 )
 
 COMPRESS_ENABLED = True
