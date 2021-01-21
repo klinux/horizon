@@ -19,6 +19,8 @@ RUN pip3 install --upgrade pip && \
 
 WORKDIR ${HORIZON_BASEDIR}
 
+RUN echo 1
+
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
 
@@ -37,6 +39,8 @@ RUN rm -rf /etc/httpd/conf.d/* && \
     sed -i '/ErrorLog/c\    ErrorLog \/dev\/stderr' /etc/httpd/conf/httpd.conf && \
     mod_wsgi-express install-module > /etc/httpd/conf.modules.d/10-wsgi.conf
 
-RUN yum remove -y httpd-devel python-devel git-core gcc openssl-devel libffi-devel
+RUN yum remove -y httpd-devel python3-devel git-core gcc openssl-devel libffi-devel
+
+COPY apache/mod_deflate.conf /etc/httpd/conf.d/mod_deflate.conf
 
 CMD /usr/sbin/httpd -DFOREGROUND

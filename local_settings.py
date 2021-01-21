@@ -10,6 +10,7 @@ WEBROOT = '/'
 ALLOWED_HOSTS = ['*']
 SITE_BRANDING = 'Cloudwise System'
 COMPRESS_OFFLINE = True
+OPENSTACK_HOST = "192.168.0.100"
 
 OPENSTACK_API_VERSIONS = {
     "identity": 3,
@@ -25,8 +26,6 @@ LOCAL_PATH = '/tmp'
 DEFAULT_THEME = 'cloudwise'
 
 AVAILABLE_THEMES = [
-    ('default', 'Default', 'themes/default'),
-    ('material', 'Material', 'themes/material'),
     ('cloudwise', 'CloudWise', 'themes/cloudwise'),
 ]
 
@@ -41,16 +40,17 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': ['192.168.0.100:11211'],
+        'LOCATION': ['%s:11211' % OPENSTACK_HOST],
     }
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-OPENSTACK_HOST = "192.168.0.100"
+
 OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "member"
 OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "default"
 OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
+AVAILABLE_REGIONS = [('http://%s:5000/v3' % OPENSTACK_HOST, 'RegionOne'),('http://10.1.1.1:5000/v3', 'RegionTwo')]
 
 ### Security
 HORIZON_CONFIG["password_validator"] = {

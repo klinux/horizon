@@ -42,7 +42,7 @@
                class="collapsed"
              {% endif %}>
              {% if dashboard.slug == "project" %}
-             <i class="mdi mdi-chart-bubble mdi-30px"></i>
+             <i class="mdi mdi-hexagon-multiple mdi-30px"></i>
              <span>{{ dashboard.name }}</span>
              {% elif dashboard.slug == "admin" %}
              <i class="mdi mdi-shield-account mdi-30px"></i>
@@ -69,7 +69,7 @@
                          data-target="#sidebar-drawer-{{ dashboard.slug }}-{{ group.slug }}"
                          href="javascript:;">
                         {% if group.slug == "compute" %}
-                        <i class="fa fa-desktop fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        <i class="mdi mdi-memory mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "volumes" %}
                         <i class="fa fa-hdd fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "volume" %}
