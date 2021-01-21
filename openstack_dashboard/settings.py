@@ -171,6 +171,7 @@ COMPRESS_PRECOMPILERS = (
 
 COMPRESS_CSS_FILTERS = (
     'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
 )
 
 COMPRESS_ENABLED = True
