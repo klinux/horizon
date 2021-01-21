@@ -71,6 +71,7 @@
     function modal(params) {
       if (params && params.title && params.body) {
         var options = {
+          size: 'lg',
           backdrop: 'static',
           controller: 'SimpleModalController as modalCtrl',
           templateUrl: path + 'modal/simple-modal.html',

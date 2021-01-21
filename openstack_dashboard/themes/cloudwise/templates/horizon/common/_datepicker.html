@@ -1,5 +1,11 @@
 {% load i18n %}
 
 {% block trimmed %}
+<label class="sr-only">{{ datepicker_label }}</label>
+<div class='input-group date'>
   {{ datepicker_input }}
+  <span class="input-group-addon datepicker-addon">
+    <i class="fa fa-calendar"></i>
+  </span>
+</div>
 {% endblock %}

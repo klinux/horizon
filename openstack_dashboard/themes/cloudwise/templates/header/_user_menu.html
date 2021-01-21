@@ -7,13 +7,13 @@
   <li class="dropdown user-menu">
     {% endif %}
     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-      <i class="material-icons">more_vert</i>
+      <i class="mdi mdi-dots-vertical mdi-24px"></i>
     </a>
     <ul id="editor_list" class="dropdown-menu dropdown-menu-right selection-menu">
       {% if HORIZON_CONFIG.bug_url %}
       <li>
         <a href="{{ HORIZON_CONFIG.bug_url }}" target="_blank">
-          <i class="material-icons">bug_report</i>
+          <i class="mdi mdi-bug"></i>
           {% trans "Report Bug" %}
         </a>
       </li>
@@ -21,7 +21,7 @@
       {% if HORIZON_CONFIG.help_url %}
       <li>
         <a href="{{ HORIZON_CONFIG.help_url }}" target="_blank">
-          <i class="material-icons">help_outline</i>
+          <i class="mdi mdi-help-circle-outline mdi-18px"></i>
           {% trans "Help" %}
         </a>
       </li>
@@ -38,7 +38,7 @@
             {% if link.icon_classes %}
             <span class="fa {{ link.icon_classes | join:" "}}"></span>
             {% else %}
-            <i class="material-icons">get_app</i>
+            <i class="mdi mdi-arrow-down-circle-outline mdi-18px">get_app</i>
             {% endif %}
             {{ link.name }}
           </a>

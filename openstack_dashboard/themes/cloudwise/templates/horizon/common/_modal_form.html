@@ -5,8 +5,6 @@
   {{ table.render }}
 </div>
 {% endif %}
-<div class="card">
-  <div class="body">
     <form id="{% block form_id %}{{ form_id }}{% endblock %}"
       ng-controller="{% block ng_controller %}DummyController{% endblock %}" name="{% block form_name %}{% endblock %}"
       autocomplete="{% block autocomplete %}{% if form.no_autocomplete %}off{% endif %}{% endblock %}"
@@ -25,6 +23,11 @@
         </div>
         {% endif %}
         {% block modal-body %}
+
+        {% if not hide %}
+        <div class="card">
+          <div class="body">
+        {% endif %}
         <div class="row">
           <div class="col-sm-6">
             <fieldset>
@@ -46,7 +49,10 @@
         {% endif %}
         <input class="btn btn-primary" type="submit" value="{{ submit_label }}">
         {% endblock %}
+        {% if not hide %}  
+          </div>
+        </div>
+        {% endif %}
       </div>
     </form>
-  </div>
   {% endblock %}

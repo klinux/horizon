@@ -2,25 +2,28 @@
 {% load i18n %}
 
 {% block pre_login %}
-  <div class="container login">
+
+<div class="login-page">
+  <div class="logo-box login-box">
+    <div class="panel-heading">
+      {% include "asset/cloudwise-logo.svg" %}
+    </div>
+  </div>
+  <div class="form-box login-box">
     <div class="row">
-      <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 horizontal-center">
+      <div class="">
         {{ block.super }}
-{% endblock %}
+        {% endblock %}
 
-{% block login_header %}
-  {% include 'auth/_splash.html' %}
-  {{ block.super }}
-{% endblock %}
+        {% block login_footer %}
+        {{ block.super }}
+        {% include '_login_form_footer.html' %}
+        {% endblock %}
 
-{% block login_footer %}
-  {{ block.super }}
-  {% include '_login_form_footer.html' %}
-{% endblock %}
-
-{% block post_login %}
-      {{ block.super }}
+        {% block post_login %}
+        {{ block.super }}
       </div>
     </div>
   </div>
+</div>
 {% endblock %}

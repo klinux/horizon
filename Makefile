@@ -5,7 +5,7 @@ help:
 
 # DOCKER TASKS
 dev: ## build image
-	docker build -t horizon -f Dockerfile-dev .
+	docker build -t horizon-dev -f Dockerfile-dev .
 	docker-compose -f docker-compose-dev.yaml up
 
 stopd: ## stop dev

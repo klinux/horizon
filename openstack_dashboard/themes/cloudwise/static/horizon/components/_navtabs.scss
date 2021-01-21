@@ -1,5 +1,6 @@
 .nav-tabs {
     border-bottom: 2px solid #eee;
+    text-transform: uppercase;
 
     > li {
         position: relative;
@@ -14,7 +15,7 @@
             &:hover,
             &:active,
             &:focus {
-                background-color: transparent !important;
+                background-color: #eee;
             }
 
             &:before {
@@ -29,7 +30,7 @@
                 @include transition(0.1s ease-in);
             }
 
-            .material-icons {
+            .mdi {
                 position: relative;
                 top: 7px;
                 margin-bottom: 8px;
@@ -40,17 +41,23 @@
     li.active {
         a {
             color: #222 !important;
+            background-color: #fff;
 
             &:hover,
             &:active,
             &:focus {
-                background-color: transparent !important;
+                background-color: #fff;
             }
 
             &:before {
                 @include transform(scaleX(1));
             }
         }
+
+        .hz-icon-required {
+            color: #F44336;
+        }
+
     }
 
     + .tab-content {

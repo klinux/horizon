@@ -25,7 +25,7 @@
 //@import 'components/_dashboard';
 
 /* Buttons ===================================== */
-//@import 'components/_buttons';
+@import 'components/_buttons';
 
 /* Bootstrap Tags Input ======================== */
 //@import 'components/_tagsinput';
@@ -40,7 +40,7 @@
 //@import 'components/_infobox';
 
 /* Alerts ====================================== */
-//@import 'components/_alerts';
+@import 'components/_alerts';
 
 /* Dialogs (SweetAlert) ======================== */
 //@import 'components/_dialogs';
@@ -61,7 +61,7 @@
 //@import 'components/_tooltippopovers';
 
 /* Nav Tabs ==================================== */
-//@import 'components/_navtabs';
+@import 'components/_navtabs';
 
 /* Thumbnails ================================== */
 //@import 'components/_thumbnails';
@@ -76,7 +76,7 @@
 //@import 'components/_collapse';
 
 /* Tables ====================================== */
-//@import 'components/_tables';
+@import 'components/_tables';
 
 /* Panel ======================================= */
 //@import 'components/_panels';
@@ -88,7 +88,7 @@
 //@import 'components/_ionrangeslider';
 
 /* Input Group ================================= */
-//@import 'components/_inputformgroup';
+@import 'components/_inputformgroup';
 
 /* Color Picker ================================ */
 //@import 'components/_colorpicker';
@@ -121,7 +121,7 @@
 //@import 'components/_preloaders';
 
 /* Dropdown Menu =============================== */
-//@import 'components/_dropdownmenu';
+@import 'components/_dropdownmenu';
 
 /* Left Sidebar & Overlay ====================== */
 @import "components/_leftsidebaroverlay";
@@ -132,23 +132,8 @@
 /* Jquery Nestable ============================= */
 //@import 'components/_jquerynestable';
 
-/* Login Page ================================== */
-@import "components/pages/_loginpage";
-
-/* Sign Up Page ================================ */
-@import "components/pages/_signuppage";
-
-/* Forgot Password Page ======================== */
-@import "components/pages/_forgotpasswordpage";
-
-/* 404 Not Found Page ========================== */
-@import "components/pages/_404";
-
-/* 500 Server Error Page ======================= */
-@import "components/pages/_500";
-
 /* Profile Page ================================ */
-@import "components/pages/_profile";
+//@import "components/pages/_profile";
 
 /* Maps ======================================== */
 //@import 'components/_maps';
@@ -172,4 +157,25 @@
 @import "components/browser-support/_ie11";
 
 /* Help Panel ================================= */
-@import "components/_help_panel";
+@import "components/help_panel";
+
+/* Selects ================================= */
+@import "components/selects";
+
+/* Spins ================================= */
+@import "components/spinners";
+
+/* Login Page ================================== */
+@import "components/pages/_loginpage";
+
+/* Sign Up Page ================================ */
+@import "components/pages/_signuppage";
+
+/* Forgot Password Page ======================== */
+@import "components/pages/_forgotpasswordpage";
+
+/* 404 Not Found Page ========================== */
+@import "components/pages/_404";
+
+/* 500 Server Error Page ======================= */
+@import "components/pages/_500";

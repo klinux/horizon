@@ -9,17 +9,17 @@
       {{ request.user.username }}
     </div>
     <div class="btn-group user-helper-dropdown">
-      <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+      <i class="fas fa-angle-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
       <ul class="dropdown-menu user-menu pull-right">
         <li>
           <a href="{% url 'horizon:settings:user:index' %}" class="waves-effect waves-block" target="_self">
-            <i class="material-icons">settings</i> {% trans "Settings" %}
+            <i class="mdi mdi-tune-variant mdi-24px"></i> {% trans "Settings" %}
           </a>
         </li>
         <li role="separator" class="divider"></li>
         <li>
           <a href="{% url 'logout' %}" class="waves-effect waves-block" target="_self">
-            <i class="material-icons">exit_to_app</i> {% trans "Sign Out" %}
+            <i class="mdi mdi-exit-to-app mdi-24px"></i> {% trans "Sign Out" %}
           </a>
         </li>
       </ul>
@@ -42,16 +42,19 @@
                class="collapsed"
              {% endif %}>
              {% if dashboard.slug == "project" %}
-             <i class="material-icons">developer_board</i>
+             <i class="mdi mdi-chart-bubble mdi-30px"></i>
              <span>{{ dashboard.name }}</span>
              {% elif dashboard.slug == "admin" %}
-             <i class="material-icons">admin_panel_settings</i>
+             <i class="mdi mdi-shield-account mdi-30px"></i>
              <span>{{ dashboard.name }}</span>
              {% elif dashboard.slug == "identity" %}
-             <i class="material-icons">face</i>
+             <i class="mdi mdi-face mdi-32px"></i>
+             <span>{{ dashboard.name }}</span>
+             {% elif dashboard.slug == "settings" %}
+             <i class="mdi mdi-tune mdi-30px"></i>
              <span>{{ dashboard.name }}</span>
              {% else %}
-             <i class="material-icons">api</i>
+             <i class="mdi mdi-webpack mdi-30px"></i>
              <span>{{ dashboard.name }}</span>
              {% endif %}
           </a>
@@ -72,7 +75,7 @@
                         {% elif group.slug == "volume" %}
                         <i class="fa fa-hdd fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "network" %}
-                        <i class="material-icons">settings_ethernet</i> <span>{{ group.name }}</span>
+                        <i class="mdi mdi-lan-connect mdi-24px"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "object_store" %}
                         <i class="fa fa-cubes fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "admin" %}
