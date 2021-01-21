@@ -1,9 +1,7 @@
 {% load branding i18n %}
 {% load context_selection %}
 {% load breadcrumb_nav %}
-{% load themes %}
 {% load compress %}
-{% theme_dir as theme_dir %}
 
 <!DOCTYPE html>
 <html>
@@ -20,11 +18,11 @@
         <title>{% block title %}{% endblock %} - {% site_branding %}</title>
         {% comment %} Load CSS sheets before Javascript {% endcomment %}
         {% compress css %}
-        <link href='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/materialize/css/materialize.css' type='text/css'
+        <link href='{{ STATIC_URL }}themes/cloudwise/vendors/materialize/css/materialize.css' type='text/css'
             rel='stylesheet' />
-        <link href='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/node-waves/waves.min.css' type='text/css'
+        <link href='{{ STATIC_URL }}themes/cloudwise/vendors/node-waves/waves.min.css' type='text/css'
             rel='stylesheet' />
-        <link href='{{ STATIC_URL }}{{ theme_dir }}/cloudwise/vendors/animate-css/animate.min.css' type='text/css'
+        <link href='{{ STATIC_URL }}themes/cloudwise/vendors/animate-css/animate.min.css' type='text/css'
             rel='stylesheet' />
         {% endcompress %}
         {% block css %}
