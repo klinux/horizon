@@ -64,9 +64,14 @@
                         <i class="fa fa-cubes fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "admin" %}
                         <i class="fa fa-users-cog fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif panel.slug == "orchestration" %}
+                        <i class="mdi mdi-routes mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif panel.slug == "dns" %}
+                        <i class="mdi mdi-dns-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% endif %}
+                        {{ group.slug }}
                       </a>
                       <ul id="sidebar-drawer-{{ dashboard.slug }}-{{ group.slug }}"
                           class="ml-menu">
@@ -153,7 +158,7 @@
                         {% else %}
                         <i class="fas fa-genderless fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% endif %}
-                        {{ panel.name }}
+                        {{ panel.slug }}
                       </a>
                     </li>
                   {% endfor %}
