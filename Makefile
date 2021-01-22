@@ -19,11 +19,7 @@ stop: ## stop hom
 
 image: ## horizon prod
 	docker build --rm -t horizon-cloudwise:${VERSION} .
-
-tag: ## create tag
 	docker tag horizon-cloudwise:${VERSION} klinux/horizon:${VERSION}
-
-push: ## push image
 	docker push klinux/horizon:${VERSION}
 
 git: # create tag

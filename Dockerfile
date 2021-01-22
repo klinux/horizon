@@ -27,9 +27,9 @@ RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py
 
 # Policies
-RUN mkdir /etc/etc/openstack-dashboard && chmod -R 755 /etc/etc/openstack-dashboard
+RUN mkdir /etc/openstack-dashboard && chmod -R 755 /etc/openstack-dashboard
 
-COPY policies/keystone_policy.json /etc/etc/openstack-dashboard/keystone_policy.json
+COPY policies/keystone_policy.json /etc/openstack-dashboard/keystone_policy.json
 
 # Modules
 RUN pip3 install django_compressor==2.4 && \
