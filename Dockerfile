@@ -20,7 +20,7 @@ RUN pip3 install --upgrade pip && \
 
 WORKDIR ${HORIZON_BASEDIR}
 
-RUN echo 27
+RUN echo 28
 
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
