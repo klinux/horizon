@@ -20,15 +20,13 @@ RUN pip3 install --upgrade pip && \
 
 WORKDIR ${HORIZON_BASEDIR}
 
-RUN echo 18
-
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
 
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py
 
-RUN pip3 install csscompressor && \
-    pip install django_compressor==2.4
+RUN pip3 install django_compressor==2.4 && \
+    pip3 install csscompressor
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
