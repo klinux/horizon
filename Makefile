@@ -1,3 +1,5 @@
+VERSION=1.0.0
+
 .PHONY: help
 help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / { printf "\033[36m%-30s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
@@ -21,8 +23,8 @@ image: ## horizon prod
 	docker build --rm -t horizon-cloudwise .
 
 push: ## push image
-	docker tag horizon-cloudwise klinux/horizon
-	docker push klinux/horizon
+	docker tag horizon-cloudwise klinux/horizon:${VERSION}
+	docker push klinux/horizon:${VERSION}
 
 git: # create tag
 	git push --delete origin 15.3.2

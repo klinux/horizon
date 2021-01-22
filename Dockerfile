@@ -15,12 +15,9 @@ RUN yum install epel-release -y && \
 RUN pip3 install --upgrade pip && \
     pip3 install python-memcached && \
     pip3 install django-widget-tweaks && \
-    pip3 install django-htmlmin &&\
     pip3 install mod-wsgi
 
 WORKDIR ${HORIZON_BASEDIR}
-
-RUN echo 1
 
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
