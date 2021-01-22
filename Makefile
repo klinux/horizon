@@ -32,4 +32,3 @@ git: # create tag
 	git tag -d 15.3.2
 	git tag -a 15.3.2 -m "Final release cloudwise"
 	git push origin 15.3.2
-
