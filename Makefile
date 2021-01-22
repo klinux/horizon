@@ -20,10 +20,10 @@ stoph: ## stop hom
 	docker-compose down
 
 image: ## horizon prod
-	docker build --rm -t horizon-cloudwise .
+	docker build --rm -t horizon-cloudwise:${VERSION} .
 
 push: ## push image
-	docker tag horizon-cloudwise klinux/horizon:${VERSION}
+	docker tag horizon-cloudwise:${VERSION} klinux/horizon:${VERSION}
 	docker push klinux/horizon:${VERSION}
 
 git: # create tag
