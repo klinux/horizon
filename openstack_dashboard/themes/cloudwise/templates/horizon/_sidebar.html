@@ -144,6 +144,12 @@
                         <i class="fa fa-fingerprint fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "backups" %}
                         <i class="mdi mdi-content-save-settings-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "dnszones" %}
+                        <i class="mdi mdi-web mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "reverse_dns" %}
+                        <i class="mdi mdi-keyboard-tab-reverse mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "orchestration" %}
+                        <i class="mdi mdi-routes mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% endif %}

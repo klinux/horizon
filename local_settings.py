@@ -18,17 +18,19 @@ OPENSTACK_API_VERSIONS = {
     "compute": 2,
 }
 
+DESIGNATE = { 'records_use_fips': True }
+
 COMPRESS_OFFLINE = True
 
 COMPRESS_ENABLED = True
 COMPRESS_FILTERS = {
-        "css": [
-            'compressor.filters.css_default.CssAbsoluteFilter',  
-            'compressor.filters.cssmin.rCSSMinFilter',
-        ],
-        "js": [
-            'compressor.filters.jsmin.JSMinFilter'
-        ]
+    "css": [
+        'compressor.filters.css_default.CssAbsoluteFilter',
+        'compressor.filters.cssmin.rCSSMinFilter',
+    ],
+    "js": [
+        'compressor.filters.jsmin.JSMinFilter'
+    ]
 }
 
 LOCAL_PATH = '/tmp'
@@ -45,7 +47,7 @@ OPENSTACK_PROFILER = {
     'enabled': False
 }
 
-SECRET_KEY='338e8547026b098129d1'
+SECRET_KEY = '338e8547026b098129d1'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
@@ -62,9 +64,10 @@ OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "member"
 OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "default"
 OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
-AVAILABLE_REGIONS = [('http://%s:5000/v3' % OPENSTACK_HOST, 'RegionOne'),('http://10.1.1.1:5000/v3', 'RegionTwo')]
+AVAILABLE_REGIONS = [('http://%s:5000/v3' % OPENSTACK_HOST,
+                      'RegionOne'), ('http://10.1.1.1:5000/v3', 'RegionTwo')]
 
-### Security
+# Security
 HORIZON_CONFIG["password_validator"] = {
     "regex": '.*',
     "help_text": _("Your password does not meet the requirements."),
@@ -111,7 +114,7 @@ OPENSTACK_NEUTRON_NETWORK = {
     # configured via the dashboard. When using specific plugins the
     # profile_support can be turned on if needed.
     'profile_support': None,
-    #'profile_support': 'cisco',
+    # 'profile_support': 'cisco',
     # Set which provider network types are supported. Only the network types
     # in this list will be available to choose from when creating a network.
     # Network types include local, flat, vlan, gre, and vxlan.
@@ -400,4 +403,5 @@ SECURITY_GROUP_RULES = {
     },
 }
 
-REST_API_REQUIRED_SETTINGS = ['OPENSTACK_HYPERVISOR_FEATURES', 'OPENSTACK_IMAGE_FORMATS']
+REST_API_REQUIRED_SETTINGS = [
+    'OPENSTACK_HYPERVISOR_FEATURES', 'OPENSTACK_IMAGE_FORMATS']

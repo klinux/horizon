@@ -25,8 +25,21 @@ RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${
 
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py
 
+# Modules
 RUN pip3 install django_compressor==2.4 && \
-    pip3 install csscompressor
+    pip3 install csscompressor && \
+    pip3 install heat-dashboard==1.5.1 && \
+    pip3 install python-heatclient==1.17.1 && \
+    pip3 install designate-dashboard==8.0.0 && \
+    pip3 install python-designateclient==2.11.0 && \
+    pip3 install manila-ui==2.18.1 && \
+    pip3 install python-manilaclient==1.27.0
+
+# Modulos settings
+RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
+    cp /usr/local/lib/python3.6/site-packages/manila_ui/local/local_settings.d/_90_manila_*.py /opt/horizon/openstack_dashboard/local/local_settings.d/ && \
+    cp /usr/local/lib/python3.6/site-packages/designatedashboard/enabled/_[1-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
+    cp /usr/local/lib/python3.6/site-packages/heat_dashboard/enabled/_[1-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
@@ -38,6 +51,8 @@ RUN rm -rf /etc/httpd/conf.d/* && \
     sed -i 's/<VirtualHost \*.*/<VirtualHost _default_:80>/g' /etc/httpd/conf.d/horizon.conf && \
     chown -R apache:apache ${HORIZON_BASEDIR} && \
     python3 -m compileall $HORIZON_BASEDIR && \
+    sed -i '/ErrorLog/c\    ErrorLog \/dev\/stderr' /etc/httpd/conf.d/horizon.conf && \
+    sed -i '/CustomLog/c\    CustomLog \/dev\/stdout combined' /etc/httpd/conf.d/horizon.conf && \
     sed -i '/ErrorLog/c\    ErrorLog \/dev\/stderr' /etc/httpd/conf/httpd.conf && \
     mod_wsgi-express install-module > /etc/httpd/conf.modules.d/10-wsgi.conf
 
