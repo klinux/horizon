@@ -64,14 +64,15 @@
                         <i class="fa fa-cubes fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "admin" %}
                         <i class="fa fa-users-cog fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
-                        {% elif panel.slug == "orchestration" %}
+                        {% elif group.slug == "orchestration" %}
                         <i class="mdi mdi-routes mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
-                        {% elif panel.slug == "dns" %}
+                        {% elif group.slug == "dns" %}
                         <i class="mdi mdi-dns-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "share" %}
+                        <i class="mdi mdi-file-tree-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% endif %}
-                        {{ group.slug }}
                       </a>
                       <ul id="sidebar-drawer-{{ dashboard.slug }}-{{ group.slug }}"
                           class="ml-menu">
@@ -152,13 +153,32 @@
                         {% elif panel.slug == "dnszones" %}
                         <i class="mdi mdi-web mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "reverse_dns" %}
-                        <i class="mdi mdi-keyboard-tab-reverse mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        <i class="mdi mdi-backburger mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "orchestration" %}
                         <i class="mdi mdi-routes mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "stacks" %}
+                        <i class="mdi mdi-layers-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "resource_types" %}
+                        <i class="mdi mdi-animation mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "template_versions" %}
+                        <i class="mdi mdi-text-box-multiple mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "template_versions" %}
+                        <i class="mdi mdi-text-box-plus-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "shares" %}
+                        <i class="mdi mdi-database mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_snapshots" %}
+                        <i class="mdi mdi-folder-image mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_networks" %}
+                        <i class="mdi mdi-folder-network-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "security_services" %}
+                        <i class="mdi mdi-security-network mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_groups" %}
+                        <i class="mdi mdi-table-network mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_group_snapshots" %}
+                        <i class="mdi mdi-folder-multiple-image mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% endif %}
-                        {{ panel.slug }}
                       </a>
                     </li>
                   {% endfor %}
