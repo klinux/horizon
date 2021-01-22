@@ -10,14 +10,12 @@ dev: ## build image
 	docker build -t horizon-dev -f Dockerfile-dev .
 	docker-compose -f docker-compose-dev.yaml up
 
-stopd: ## stop dev
-	docker-compose -f docker-compose-dev.yaml down
-
 hom: ## execute hom
 	docker-compose up
 
-stoph: ## stop hom
+stop: ## stop hom
 	docker-compose down
+	docker-compose -f docker-compose-dev.yaml down
 
 image: ## horizon prod
 	docker build --rm -t horizon-cloudwise:${VERSION} .
