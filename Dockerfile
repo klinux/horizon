@@ -15,7 +15,7 @@ RUN yum install epel-release -y && \
 RUN pip3 install --upgrade pip && \
     pip3 install python-memcached && \
     pip3 install django-widget-tweaks && \
-    pip4 install rcssmin \
+    pip3 install rcssmin && \
     pip3 install mod-wsgi
 
 WORKDIR ${HORIZON_BASEDIR}
@@ -27,8 +27,12 @@ RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${
 
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py
 
+RUN pip3 install csscompressor && \
+    pip install django_compressor==2.4
+
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
+    python3 manage.py compress --force && \
     python3 manage.py make_web_conf --wsgi
 
 RUN rm -rf /etc/httpd/conf.d/* && \

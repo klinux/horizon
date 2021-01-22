@@ -9,7 +9,6 @@ TEMPLATE_DEBUG = DEBUG
 WEBROOT = '/'
 ALLOWED_HOSTS = ['*']
 SITE_BRANDING = 'Cloudwise System'
-COMPRESS_OFFLINE = False
 OPENSTACK_HOST = "192.168.0.100"
 
 OPENSTACK_API_VERSIONS = {
@@ -17,6 +16,19 @@ OPENSTACK_API_VERSIONS = {
     "image": 2,
     "volume": 2,
     "compute": 2,
+}
+
+COMPRESS_OFFLINE = True
+
+COMPRESS_ENABLED = True
+COMPRESS_FILTERS = {
+        "css": [
+            'compressor.filters.css_default.CssAbsoluteFilter',  
+            'compressor.filters.cssmin.rCSSMinFilter',
+        ],
+        "js": [
+            'compressor.filters.jsmin.JSMinFilter'
+        ]
 }
 
 LOCAL_PATH = '/tmp'

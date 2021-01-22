@@ -169,14 +169,6 @@ COMPRESS_PRECOMPILERS = (
     ('text/scss', 'horizon.utils.scss_filter.HorizonScssFilter'),
 )
 
-COMPRESS_CS_FILTERS = (
-    ('compressor.filters.css_default.CssAbsoluteFilter'),
-    ('compressor.filters.cssmin.rCSSMinFilter'),
-)
-
-COMPRESS_JS_FILTERS = (
-    ('compressor.filters.jsmin.JSMinFilter'),
-)
 
 COMPRESS_ENABLED = True
 COMPRESS_OUTPUT_DIR = 'dashboard'
