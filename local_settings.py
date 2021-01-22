@@ -35,7 +35,7 @@ COMPRESS_FILTERS = {
 
 LOCAL_PATH = '/tmp'
 
-# POLICY_FILES_PATH = '/etc/openstack-dashboard'
+POLICY_FILES_PATH = '/etc/openstack-dashboard'
 
 DEFAULT_THEME = 'cloudwise'
 

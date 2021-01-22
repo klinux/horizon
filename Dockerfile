@@ -26,6 +26,11 @@ RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${
 
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py
 
+# Policies
+RUN mkdir /etc/etc/openstack-dashboard && chmod -R 755 /etc/etc/openstack-dashboard
+
+COPY policies/keystone_policy.json /etc/etc/openstack-dashboard/keystone_policy.json
+
 # Modules
 RUN pip3 install django_compressor==2.4 && \
     pip3 install csscompressor && \
@@ -36,7 +41,7 @@ RUN pip3 install django_compressor==2.4 && \
     pip3 install manila-ui==2.18.1 && \
     pip3 install python-manilaclient==1.27.0
 
-# Modulos settings
+# Modules settings
 RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
     cp /usr/local/lib/python3.6/site-packages/manila_ui/local/local_settings.d/_90_manila_*.py /opt/horizon/openstack_dashboard/local/local_settings.d/ && \
     cp /usr/local/lib/python3.6/site-packages/designatedashboard/enabled/_[1-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
