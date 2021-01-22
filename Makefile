@@ -25,10 +25,10 @@ push: ## push image
 	docker push klinux/horizon
 
 git: # create tag
+	#git push --delete origin 15.3.2
 	git add .
 	git commit -m "Final release cloudwise"
 	git push
-	git push --delete origin 15.3.2
-	git tag -d 15.3.2
 	git tag -a 15.3.2 -m "Update theme"
 	git push origin 15.3.2
+	git tag -d 15.3.2
