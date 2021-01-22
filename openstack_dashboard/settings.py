@@ -63,6 +63,11 @@ SELECTABLE_THEMES = None
 INTEGRATION_TESTS_SUPPORT = False
 NG_TEMPLATE_CACHE_AGE = 2592000
 
+HTML_MINIFY = True
+KEEP_COMMENTS_ON_MINIFYING = False
+CONSERVATIVE_WHITESPACE_ON_MINIFYING = False
+
+
 ROOT_URLCONF = 'openstack_dashboard.urls'
 
 HORIZON_CONFIG = {
@@ -110,6 +115,7 @@ OPENSTACK_IMAGE_BACKEND = {
 }
 
 MIDDLEWARE = (
+    'htmlmin.middleware.HtmlMinifyMiddleware',
     'openstack_auth.middleware.OpenstackAuthMonkeyPatchMiddleware',
     'debreach.middleware.RandomCommentMiddleware',
     'django.middleware.common.CommonMiddleware',
