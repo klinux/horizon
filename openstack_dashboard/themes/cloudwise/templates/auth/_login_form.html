@@ -6,7 +6,6 @@
   {% csrf_token %}
   {% endblock %}
 
-
   {% block login_body %}
   {% comment %}
   These fake fields are required to prevent Chrome v34+ from autofilling form.
@@ -43,7 +42,7 @@
 
   {% if request.COOKIES.logout_reason %}
   {% if request.COOKIES.logout_status == "success" %}
-  
+
   <div class="form-group clearfix error help-block alert alert-success" id="logout_reason">
     {% else %}
     <div class="form-group clearfix error help-block alert alert-danger" id="logout_reason">
@@ -61,7 +60,6 @@
     {% endif %}
     {% include "horizon/common/_form_fields.html" %}
     {% endblock %}
-  </div>
 
     {% block login_footer %}
     <button id="loginBtn" type="submit" class="btn btn-primary pull-right">
@@ -69,8 +67,9 @@
     </button>
     <div class="clearfix"></div>
     {% endblock %}
+  </div>
 
-    {% block post_login%}
-    
+  {% block post_login%}
+
 </form>
 {% endblock %}

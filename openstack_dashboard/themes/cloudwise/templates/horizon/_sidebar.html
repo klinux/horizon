@@ -8,22 +8,6 @@
     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{ request.user.username }}
     </div>
-    <div class="btn-group user-helper-dropdown">
-      <i class="fas fa-angle-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
-      <ul class="dropdown-menu user-menu pull-right">
-        <li>
-          <a href="{% url 'horizon:settings:user:index' %}" class="waves-effect waves-block" target="_self">
-            <i class="mdi mdi-tune-variant mdi-24px"></i> {% trans "Settings" %}
-          </a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li>
-          <a href="{% url 'logout' %}" class="waves-effect waves-block" target="_self">
-            <i class="mdi mdi-exit-to-app mdi-24px"></i> {% trans "Sign Out" %}
-          </a>
-        </li>
-      </ul>
-    </div>
   </div>
 </div>
 
@@ -42,19 +26,19 @@
                class="collapsed"
              {% endif %}>
              {% if dashboard.slug == "project" %}
-             <i class="mdi mdi-hexagon-multiple mdi-30px"></i>
+             <i class="mdi mdi-hexagon-multiple mdi-28px"></i>
              <span>{{ dashboard.name }}</span>
              {% elif dashboard.slug == "admin" %}
-             <i class="mdi mdi-shield-account mdi-30px"></i>
+             <i class="mdi mdi-shield-account mdi-28px"></i>
              <span>{{ dashboard.name }}</span>
              {% elif dashboard.slug == "identity" %}
-             <i class="mdi mdi-face mdi-32px"></i>
+             <i class="mdi mdi-face mdi-28px"></i>
              <span>{{ dashboard.name }}</span>
              {% elif dashboard.slug == "settings" %}
-             <i class="mdi mdi-tune mdi-30px"></i>
+             <i class="mdi mdi-tune mdi-28px"></i>
              <span>{{ dashboard.name }}</span>
              {% else %}
-             <i class="mdi mdi-webpack mdi-30px"></i>
+             <i class="mdi mdi-webpack mdi-28px"></i>
              <span>{{ dashboard.name }}</span>
              {% endif %}
           </a>
@@ -71,7 +55,7 @@
                         {% if group.slug == "compute" %}
                         <i class="mdi mdi-memory mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "volumes" %}
-                        <i class="fa fa-hdd fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        <i class="mdi mdi-database mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "volume" %}
                         <i class="fa fa-hdd fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "network" %}
@@ -97,7 +81,7 @@
                         {% elif panel.slug == "images" %}
                         <i class="fa fa-compact-disc fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "key_pairs" %}
-                        <i class="fa fa-key fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        <i class="mdi mdi-shield-key-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "server_groups" %}
                         <i class="fa fa-object-group fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "instances" %}
@@ -105,17 +89,17 @@
                         {% elif panel.slug == "volumes" %}
                         <i class="fa fa-boxes fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "snapshots" %}
-                        <i class="far fa-clone fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        <i class="mdi mdi-camera-plus-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "volume_groups" %}
-                        <i class="fa fa-clone fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        <i class="mdi mdi-dots-hexagon mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "vg_snapshots" %}
-                        <i class="far fa-clone fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        <i class="mdi mdi-image-multiple mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "network_topology" %}
                         <i class="fa fa-sitemap fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "networks" %}
                         <i class="fa fa-network-wired fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "routers" %}
-                        <i class="fa fa-project-diagram fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        <i class="mdi mdi-router mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "security_groups" %}
                         <i class="fa fa-shield-alt fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "floating_ips" %}
@@ -158,6 +142,8 @@
                         <i class="fa fa-user-cog fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "password" %}
                         <i class="fa fa-fingerprint fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "backups" %}
+                        <i class="mdi mdi-content-save-settings-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% endif %}

@@ -3,27 +3,36 @@
 
 {% block pre_login %}
 
-<div class="login-page">
-  <div class="logo-box login-box">
-    <div class="panel-heading">
-      {% include "asset/cloudwise-logo.svg" %}
-    </div>
+<div class="container-fluid login-container">
+  <div>
+    <img src="/static/themes/cloudwise/img/logo.png" class="login-logo img-responsive center-block" />
   </div>
-  <div class="form-box login-box">
+  <div class="login-body">
     <div class="row">
-      <div class="">
-        {{ block.super }}
-        {% endblock %}
+      <div class="col-lg-6 login-border-line">
+        <div class="login-box-img">
+          <div class=>
+            <img src="/static/themes/cloudwise/img/login-back.png" class="login-image img-responsive center-block" />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="login-form-box">
+          <div class="row">
+            {{ block.super }}
+            {% endblock %}
 
-        {% block login_footer %}
-        {{ block.super }}
-        {% include '_login_form_footer.html' %}
-        {% endblock %}
+            {% block login_footer %}
+            {{ block.super }}
+            {% include '_login_form_footer.html' %}
+            {% endblock %}
 
-        {% block post_login %}
-        {{ block.super }}
+            {% block post_login %}
+            {{ block.super }}
+            {% endblock %}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-{% endblock %}

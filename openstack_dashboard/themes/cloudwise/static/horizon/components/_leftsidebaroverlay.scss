@@ -132,19 +132,30 @@
                 padding: 8px 16px;
             }
 
-            i.material-icons {
-                margin-top: 3px;
+            i.mdi {
+                margin-top: 6px;
             }
 
             i.fa {
-                margin-top: 2px;
+                margin-top: 6px;
+                margin-right: 2px;
+                font-size: 16px;
+            }
+
+            i.fas {
+                margin-top: 6px;
+                margin-right: 2px;
+                font-size: 16px;
+            }
+            
+            i.far {
+                margin-top: 6px;
                 margin-right: 2px;
                 font-size: 16px;
             }
 
             i.fa-1x {
-                margin-top: 3px;
-                font-size: 18px;
+                font-size: 16px;
             }
             
             i.fa-2x {

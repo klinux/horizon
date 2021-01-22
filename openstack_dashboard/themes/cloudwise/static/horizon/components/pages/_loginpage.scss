@@ -1,41 +1,88 @@
 #splash {
-    background: #fff !important;
+  background: #fff !important;
+  color: #000;
+  overflow-x: hidden;
+  height: 100%;
+  background-repeat: no-repeat;
 }
 
-.login-page {
-  display: flex;
+.login-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 5%;
 }
 
-.login-box {
-  flex: 1;
+.login-body {
+  border-radius: 0px;
 }
 
-.login-box:first-child {
-    margin-right: 35px;
+.login-form-box {
+  margin: 70px 0px 0px 40px;
+  width: 65%;
 }
 
-.logo-box {
-    background: url('/static/themes/cloudwise/img/login-back.png') no-repeat no-repeat;
-    margin-top: 10%;
-    float: left;
-    margin-left: 30%;
-    width: 600px;
-    max-width: 600px;
-    height: 517px;
-    min-height: 517px;
+.login-logo {
+  margin-left: 50%;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
 
-.logo-box svg {
-    width: 600px;
-    margin-top: -100px;
-    transform: scale(2.5);
-    position: absolute;
+.login-image {
+  width: 575px;
+  height: 489px;
 }
 
-.form-box {
-    padding: 100px 10px 10px 10px;
-    margin-top: 10%;
+.login-border-line {
+  border-right: 1px solid #eeeeee;
+}
+
+.login-line {
+  height: 1px;
+  width: 45%;
+  background-color: #e0e0e0;
+  margin-top: 10px;
+}
+
+::placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+  font-weight: 300;
+}
+
+:-ms-input-placeholder {
+  color: #bdbdbd;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 1200px) {
+  .login-container {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 2px;
+  }
+
+  .login-logo {
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+  }
+
+  .login-image {
+    width: 300px;
+    height: 220px;
+  }
+
+  .login-border-line {
+    border-right: none;
+  }
+
+  .login-form-box {
+    border-top: 1px solid #eeeeee !important;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
     width: 400px;
-    max-width: 400px;
-    min-height: 400px;
+  }
 }

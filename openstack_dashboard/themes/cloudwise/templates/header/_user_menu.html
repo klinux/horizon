@@ -10,6 +10,11 @@
       <i class="mdi mdi-dots-vertical mdi-24px"></i>
     </a>
     <ul id="editor_list" class="dropdown-menu dropdown-menu-right selection-menu">
+      <li>
+        <a href="{% url 'horizon:settings:user:index' %}" class="waves-effect waves-block" target="_self">
+          <i class="mdi mdi-tune-variant mdi-18px"></i> {% trans "Settings" %}
+        </a>
+      </li>
       {% if HORIZON_CONFIG.bug_url %}
       <li>
         <a href="{{ HORIZON_CONFIG.bug_url }}" target="_blank">
@@ -53,6 +58,12 @@
         {% include 'header/_theme_list.html' %}
       </li>
       {% endif %}
+      <li role="separator" class="divider"></li>
+      <li>
+        <a href="{% url 'logout' %}" class="waves-effect waves-block" target="_self">
+          <i class="mdi mdi-exit-to-app mdi-18px"></i> {% trans "Sign Out" %}
+        </a>
+      </li>
     </ul>
     {% if not_list %}
 </div>

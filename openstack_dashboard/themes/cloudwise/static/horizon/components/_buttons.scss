@@ -1,7 +1,7 @@
 .btn {
   text-transform: uppercase;
   &:focus {
-    border-color: rgba(101,109,119,.16);
+    border-color: rgba(101, 109, 119, 0.16);
   }
 }
 
@@ -24,7 +24,7 @@
   font-weight: bold;
   color: #333;
   @include transition(0.5s);
-  border-color: rgba(101,109,119,.16);
+  border-color: rgba(101, 109, 119, 0.16);
 
   &:active,
   &:focus {
@@ -57,7 +57,7 @@
 
 .btn:not(.btn-link):not(.btn-circle) {
   @include border-radius(2px);
-  border-color: rgba(101,109,119,.16);
+  border-color: rgba(101, 109, 119, 0.16);
   font-size: 13px;
   outline: none;
 
@@ -93,5 +93,4 @@
   .btn-group {
     box-shadow: none !important;
   }
-
 }

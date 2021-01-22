@@ -57,8 +57,13 @@
             </div>
           </div>
           {% else %}
-            {% if modal %}<a class="btn btn-default cancel">{% trans "Cancel" %}</a>{% endif %}
-            <input class="btn btn-primary" type="submit" value="{{ workflow.finalize_button_name }}" />
+            {% if modal %}
+            <div class="row">
+              <div class="col-sm-12">
+                <a class="btn btn-default cancel">{% trans "Cancel" %}</a>{% endif %}
+                <input class="btn btn-primary" type="submit" value="{{ workflow.finalize_button_name }}" />
+              </div>
+            </div>
           {% endif %}
         {% endblock %}
         </div>

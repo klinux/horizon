@@ -126,7 +126,6 @@
   }
 }
 
-
 .datepicker-delimiter {
   padding-right: 16px;
 }
@@ -140,4 +139,16 @@
 
 .datepicker-delimiter-text {
   display: none;
+}
+
+input.btn {
+  width: auto !important;
+}
+
+form:not(.form-inline) .form-group .themable-select .dropdown-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(96% - 1em);
+  float: left;
 }
