@@ -30,5 +30,5 @@ git: # create tag
 	git push
 	git push --delete origin 15.3.2
 	git tag -d 15.3.2
-	git tag -a 15.3.2 -m "Final release cloudwise"
+	git tag -a 15.3.2 -m "Update theme"
 	git push origin 15.3.2
