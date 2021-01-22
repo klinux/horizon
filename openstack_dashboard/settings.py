@@ -169,7 +169,6 @@ COMPRESS_PRECOMPILERS = (
     ('text/scss', 'horizon.utils.scss_filter.HorizonScssFilter'),
 )
 
-
 COMPRESS_ENABLED = True
 COMPRESS_OUTPUT_DIR = 'dashboard'
 COMPRESS_CSS_HASHING_METHOD = 'hash'
