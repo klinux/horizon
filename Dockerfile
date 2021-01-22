@@ -19,7 +19,7 @@ RUN pip3 install --upgrade pip && \
 
 WORKDIR ${HORIZON_BASEDIR}
 
-RUN echo 14
+RUN echo 15
 
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
@@ -28,7 +28,6 @@ COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settin
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
-    python3 manage.py compress && \
     python3 manage.py make_web_conf --wsgi
 
 RUN rm -rf /etc/httpd/conf.d/* && \
