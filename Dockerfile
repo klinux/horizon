@@ -48,7 +48,7 @@ RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py
     cp /usr/local/lib/python3.6/site-packages/manila_ui/local/local_settings.d/_90_manila_*.py /opt/horizon/openstack_dashboard/local/local_settings.d/ && \
     cp /usr/local/lib/python3.6/site-packages/designatedashboard/enabled/_[1-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
     cp /usr/local/lib/python3.6/site-packages/heat_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ &&  \
-    cp /usr/local/lib/python3.6/site-packages/openstack_dashboard/local/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
+    cp /usr/local/lib/python3.6/site-packages/trove_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
