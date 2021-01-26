@@ -41,14 +41,16 @@ RUN pip3 install django_compressor==2.4 && \
     pip3 install python-designateclient==2.11.0 && \
     pip3 install manila-ui==2.18.1 && \
     pip3 install python-manilaclient==1.27.0 && \
-    pip3 install trove-dashboard==12.0.0
+    pip3 install trove-dashboard==12.0.0 && \
+    pip3 install cloudkitty-dashboard==8.1.0
 
 # Modules settings
 RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
     cp /usr/local/lib/python3.6/site-packages/manila_ui/local/local_settings.d/_90_manila_*.py /opt/horizon/openstack_dashboard/local/local_settings.d/ && \
     cp /usr/local/lib/python3.6/site-packages/designatedashboard/enabled/_[1-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
     cp /usr/local/lib/python3.6/site-packages/heat_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ &&  \
-    cp /usr/local/lib/python3.6/site-packages/trove_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
+    cp /usr/local/lib/python3.6/site-packages/trove_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
+    cp /usr/local/lib/python3.6/site-packages/cloudkitty_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
