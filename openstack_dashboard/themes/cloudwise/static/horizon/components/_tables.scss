@@ -12,40 +12,35 @@
     tr.primary {
       td,
       th {
-        background-color: #1f91f3;
-        color: #fff;
+        border-bottom: 1px solid #1f91f3;
       }
     }
 
     tr.success {
       td,
       th {
-        background-color: #2b982b;
-        color: #fff;
+        border-bottom: 1px solid #2b982b;
       }
     }
 
     tr.info {
       td,
       th {
-        background-color: #00b0e4;
-        color: #fff;
+        border-bottom: 1px solid #00b0e4;
       }
     }
 
     tr.warning {
       td,
       th {
-        background-color: #ff9600;
-        color: #999;
+        border-bottom: 1px solid #ff9600;
       }
     }
 
     tr.danger {
       td,
       th {
-        background-color: #fb483a;
-        color: #fff;
+        border-bottom: 1px solid #fb483a;
       }
     }
   }
