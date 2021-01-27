@@ -35,14 +35,14 @@ COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settin
 # Modules
 RUN pip3 install django_compressor==2.4 && \
     pip3 install csscompressor && \
-    pip3 install heat-dashboard==1.5.1 && \
-    pip3 install python-heatclient==1.17.1 && \
-    pip3 install designate-dashboard==8.0.0 && \
-    pip3 install python-designateclient==2.11.0 && \
-    pip3 install manila-ui==2.18.1 && \
-    pip3 install python-manilaclient==1.27.0 && \
-    pip3 install trove-dashboard==12.0.0 && \
-    pip3 install cloudkitty-dashboard==8.1.0
+    pip3 install heat-dashboard==2.0.2 && \
+    pip3 install python-heatclient==1.18.1 && \
+    pip3 install designate-dashboard==9.0.0 && \
+    pip3 install python-designateclient==3.0.0 && \
+    pip3 install manila-ui==2.19.1 && \
+    pip3 install python-manilaclient==1.29.0 && \
+    pip3 install trove-dashboard==13.0.0 && \
+    pip3 install cloudkitty-dashboard==9.0.0
 
 # Modules settings
 RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
