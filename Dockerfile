@@ -26,6 +26,8 @@ RUN mkdir /etc/openstack-dashboard && chmod -R 755 /etc/openstack-dashboard
 
 COPY policies/keystone_policy.json /etc/openstack-dashboard/keystone_policy.json
 
+RUN echo 50
+
 # Build
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
@@ -41,7 +43,7 @@ RUN pip3 install django_compressor==2.4 && \
     pip3 install python-designateclient==3.0.0 && \
     pip3 install manila-ui==2.19.1 && \
     pip3 install python-manilaclient==1.29.0 && \
-    pip3 install trove-dashboard==13.0.0 && \
+    pip3 install trove-dashboard==15.0.0 && \
     pip3 install cloudkitty-dashboard==9.0.0
 
 # Modules settings
