@@ -26,8 +26,6 @@ RUN mkdir /etc/openstack-dashboard && chmod -R 755 /etc/openstack-dashboard
 
 COPY policies/keystone_policy.json /etc/openstack-dashboard/keystone_policy.json
 
-RUN echo 50
-
 # Build
 RUN git clone --branch 15.3.2 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
     pip3 install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/stein .
@@ -43,7 +41,7 @@ RUN pip3 install django_compressor==2.4 && \
     pip3 install python-designateclient==3.0.0 && \
     pip3 install manila-ui==2.19.1 && \
     pip3 install python-manilaclient==1.29.0 && \
-    pip3 install trove-dashboard==15.0.0 && \
+    pip3 install trove-dashboard==13.0.0 && \
     pip3 install cloudkitty-dashboard==9.0.0
 
 # Modules settings
@@ -53,6 +51,9 @@ RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py
     cp /usr/local/lib/python3.6/site-packages/heat_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ &&  \
     cp /usr/local/lib/python3.6/site-packages/trove_dashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/ && \
     cp /usr/local/lib/python3.6/site-packages/cloudkittydashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
+
+# Patchs
+RUN sed -i 's/return \[{\"net-id\"\:\ netid,\ \"v4-fixed-ip\"\:\ \"\"}/return\ \[{\"net-id\":\ netid}/g' /usr/local/lib/python3.6/site-packages/trove_dashboard/content/databases/workflows/create_instance.py
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
