@@ -70,6 +70,10 @@
                         <i class="mdi mdi-dns-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% elif group.slug == "share" %}
                         <i class="mdi mdi-file-tree-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "database" %}
+                        <i class="mdi mdi-database-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "rating" %}
+                        <i class="mdi mdi-file-star-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless" aria-hidden="true"></i> <span>{{ group.name }}</span>
                         {% endif %}
@@ -184,6 +188,18 @@
                         <i class="mdi mdi-layers mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% elif panel.slug == "share_group_types" %}
                         <i class="mdi mdi-select-group mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "rating" %}
+                        <i class="mdi mdi-star-box-multiple-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "reporting" %}
+                        <i class="mdi mdi-file-chart mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "databases" %}
+                        <i class="mdi mdi-layers-triple-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "database_backups" %}
+                        <i class="mdi mdi-database-check-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "database_clusters" %}
+                        <i class="mdi mdi-database-settings-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "database_configurations" %}
+                        <i class="mdi mdi-table-cog mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% else %}
                         <i class="fas fa-genderless fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
                         {% endif %}
