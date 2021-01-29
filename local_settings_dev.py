@@ -15,7 +15,6 @@ COMPRESS_ENABLED = False
 COMPRESS_OFFLINE = False
 
 AVAILABLE_THEMES = [
-    ('default', 'Default', 'themes/default'),
     ('cloudwise', 'CloudWise', 'themes/cloudwise'),
 ]
 
@@ -28,13 +27,20 @@ OPENSTACK_API_VERSIONS = {
 
 LOCAL_PATH = '/tmp'
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 OPENSTACK_HOST = HOST_LOCAL
 OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "member"
 OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "default"
 OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': ['%s:11211' % HOST_LOCAL],
+    }
+}
 
 AVAILABLE_REGIONS = [('http://%s:5000/v3' % OPENSTACK_HOST, 'RegionOne'),('http://10.1.1.1:5000/v3', 'RegionTwo')]
 

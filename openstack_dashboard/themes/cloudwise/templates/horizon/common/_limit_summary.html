@@ -7,12 +7,10 @@
       {% trans "Limit Summary" %}
     </h2>
   </div>
+  <div class="row clearfix"></div>
   {% for section in charts %}
   {% for chart in section.charts %}
-  {% if forloop.first or forloop.counter0|divisibleby:6 %}
-  <div class="row clearfix">
-    {% endif %}
-    <div class="d3_quota_bar col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="d3_quota_bar col-lg-3 col-md-4 col-sm-6 col-xs-12">
       <div class="card">
         <div class="header">
           <h2>
@@ -42,11 +40,9 @@
       </div>
     </div>
     {% if forloop.last or forloop.counter|divisibleby:6 %}
-    {% if not forloop.first %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
   </div>
-  {% endif %}
-  {% endif %}
-  {% endfor %}
-  {% endfor %}
 </div>
 {% endspaceless %}
