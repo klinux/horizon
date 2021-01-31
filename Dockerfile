@@ -41,7 +41,7 @@ RUN pip3 install django_compressor==2.4 && \
     pip3 install python-designateclient==3.0.0 && \
     pip3 install manila-ui==2.19.1 && \
     pip3 install python-manilaclient==1.29.0 && \
-    pip3 install trove-dashboard==13.0.0 && \
+    pip3 install trove-dashboard==15.0.0 && \
     pip3 install cloudkitty-dashboard==9.0.0
 
 # Modules settings
