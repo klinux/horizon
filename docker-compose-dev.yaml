@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  horizon-dev:
+      image: horizon
+      entrypoint: tox -e runserver 0.0.0.0:5000
+      volumes:
+        - ./:/app/
+        - ./local_settings_dev.py:/app/openstack_dashboard/local/local_settings.py:ro
+      ports:
+        - 5000:5000
+

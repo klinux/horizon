@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  horizon:
+      image: klinux/horizon:1.0.0
+      volumes:
+        - ./local_settings.py:/opt/horizon/openstack_dashboard/local/local_settings.py:ro
+      ports:
+        - 8000:80

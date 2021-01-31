@@ -1,0 +1,84 @@
+.table {
+  tbody {
+    tr {
+      td,
+      th {
+        padding: 10px;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+    }
+
+    tr.primary {
+      td,
+      th {
+        border-bottom: 1px solid #1f91f3;
+      }
+    }
+
+    tr.success {
+      td,
+      th {
+        border-bottom: 1px solid #2b982b;
+      }
+    }
+
+    tr.info {
+      td,
+      th {
+        border-bottom: 1px solid #00b0e4;
+      }
+    }
+
+    tr.warning {
+      td,
+      th {
+        border-bottom: 1px solid #ff9600;
+      }
+    }
+
+    tr.danger {
+      td,
+      th {
+        border-bottom: 1px solid #fb483a;
+      }
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+}
+
+.table-bordered {
+  border-top: 1px solid #eee;
+
+  tbody {
+    tr {
+      td,
+      th {
+        padding: 10px;
+        border: 1px solid #eee;
+      }
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        padding: 10px;
+        border: 1px solid #eee;
+      }
+    }
+  }
+}
+
+.table-rsp .rsp-p1 {
+  display: table-cell;
+  width: auto;
+}

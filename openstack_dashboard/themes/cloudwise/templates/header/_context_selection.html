@@ -1,0 +1,41 @@
+{% load context_selection %}
+
+{% if not_list %}
+<div class="dropdown">
+  {% else %}
+  <li class="dropdown">
+    {% endif %}
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+      aria-expanded="false" role="button" title="Change Project">
+      <i class="mdi mdi-hexagon-multiple mdi-24px"></i>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-right selection-menu">
+      {% comment %}
+      is_multidomain is only available through an assignment tag pulled in through context_selection
+      {% endcomment %}
+      {% is_multidomain as domain_supported %}
+      {% if domain_supported %}
+      <li>
+        {% show_domain_list %}
+      </li>
+      {% endif %}
+      <li>
+        {% show_project_list %}
+      </li>
+
+      {% comment %}
+      is_multi_region is only available through an assignment tag pulled in through context_selection
+      {% endcomment %}
+      {% is_multi_region as multi_region %}
+      {% if multi_region %}
+      <li>
+        {% show_region_list %}
+      </li>
+      {% endif %}
+    </ul>
+    {% if not_list %}
+</div>
+{% else %}
+</li>
+{% endif %}

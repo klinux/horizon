@@ -1,0 +1,72 @@
+{% load i18n %}
+{% load themes %}
+
+{% if not_list %}
+<div class="dropdown user-menu">
+  {% else %}
+  <li class="dropdown user-menu">
+    {% endif %}
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+      <i class="mdi mdi-dots-vertical mdi-24px"></i>
+    </a>
+    <ul id="editor_list" class="dropdown-menu dropdown-menu-right selection-menu">
+      <li>
+        <a href="{% url 'horizon:settings:user:index' %}" class="waves-effect waves-block" target="_self">
+          <i class="mdi mdi-tune-variant mdi-18px"></i> {% trans "Settings" %}
+        </a>
+      </li>
+      {% if HORIZON_CONFIG.bug_url %}
+      <li>
+        <a href="{{ HORIZON_CONFIG.bug_url }}" target="_blank">
+          <i class="mdi mdi-bug"></i>
+          {% trans "Report Bug" %}
+        </a>
+      </li>
+      {% endif %}
+      {% if HORIZON_CONFIG.help_url %}
+      <li>
+        <a href="{{ HORIZON_CONFIG.help_url }}" target="_blank">
+          <i class="mdi mdi-help-circle-outline mdi-18px"></i>
+          {% trans "Help" %}
+        </a>
+      </li>
+      {% endif %}
+
+      {% for link in USER_MENU_LINKS %}
+      <li>
+        {% if link.external %}
+        <a href="{{ link.url }}">
+          {% else %}
+          <a href="{% url link.url %}">
+            {% endif %}
+
+            {% if link.icon_classes %}
+            <span class="fa {{ link.icon_classes | join:" "}}"></span>
+            {% else %}
+            <i class="mdi mdi-arrow-down-circle-outline mdi-18px">get_app</i>
+            {% endif %}
+            {{ link.name }}
+          </a>
+
+      </li>
+      {% endfor %}
+
+      {% themes as available_themes %}
+      {% if available_themes and available_themes|length > 1 %}
+      <li class="divider"></li>
+      <li>
+        {% include 'header/_theme_list.html' %}
+      </li>
+      {% endif %}
+      <li role="separator" class="divider"></li>
+      <li>
+        <a href="{% url 'logout' %}" class="waves-effect waves-block" target="_self">
+          <i class="mdi mdi-exit-to-app mdi-18px"></i> {% trans "Sign Out" %}
+        </a>
+      </li>
+    </ul>
+    {% if not_list %}
+</div>
+{% else %}
+</li>
+{% endif %}

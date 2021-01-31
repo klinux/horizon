@@ -1,0 +1,221 @@
+{% load horizon i18n %}
+
+<div class="user-info">
+  <div class="image">
+    <img src="/static/themes/cloudwise/img/user.png" alt="User" width="48" height="48">
+  </div>
+  <div class="info-container">
+    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ request.user.username }}
+    </div>
+  </div>
+</div>
+
+<div class="menu">
+  <ul id="sidebar-drawer" class="list">
+    <li class="header">OPERATION MENU</li>
+    {% for dashboard, panel_info in components %}
+      {% if user|has_permissions:dashboard %}
+        <li {% if current.slug == dashboard.slug %} class="active" {% endif %}>
+          <a class="menu-toggle" 
+             data-toggle="collapse"
+             data-parent="#sidebar-drawer"
+             data-target="#sidebar-drawer-{{ dashboard.slug }}"
+             href="javascript:;"
+             {% if current.slug != dashboard.slug %}
+               class="collapsed"
+             {% endif %}>
+             {% if dashboard.slug == "project" %}
+             <i class="mdi mdi-hexagon-multiple mdi-28px"></i>
+             <span>{{ dashboard.name }}</span>
+             {% elif dashboard.slug == "admin" %}
+             <i class="mdi mdi-shield-account mdi-28px"></i>
+             <span>{{ dashboard.name }}</span>
+             {% elif dashboard.slug == "identity" %}
+             <i class="mdi mdi-face mdi-28px"></i>
+             <span>{{ dashboard.name }}</span>
+             {% elif dashboard.slug == "settings" %}
+             <i class="mdi mdi-tune mdi-28px"></i>
+             <span>{{ dashboard.name }}</span>
+             {% else %}
+             <i class="mdi mdi-webpack mdi-28px"></i>
+             <span>{{ dashboard.name }}</span>
+             {% endif %}
+          </a>
+          <ul id="sidebar-drawer-{{ dashboard.slug }}" class="ml-menu">
+            {% for group, panels in panel_info.items %}
+              {% with panels|has_permissions_on_list:user as filtered_panels %}
+                {% if filtered_panels %}
+                  {% if group.name %}
+                    <li {% if current.slug == dashboard.slug and current_panel_group == group.slug %} class="active" {% endif %}>
+                      <a class="menu-toggle"
+                         data-parent="#sidebar-drawer-{{ dashboard.slug }}"
+                         data-target="#sidebar-drawer-{{ dashboard.slug }}-{{ group.slug }}"
+                         href="javascript:;">
+                        {% if group.slug == "compute" %}
+                        <i class="mdi mdi-memory mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "volumes" %}
+                        <i class="mdi mdi-database mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "volume" %}
+                        <i class="fa fa-hdd fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "network" %}
+                        <i class="mdi mdi-lan-connect mdi-24px"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "object_store" %}
+                        <i class="fa fa-cubes fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "admin" %}
+                        <i class="fa fa-users-cog fa-2x" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "orchestration" %}
+                        <i class="mdi mdi-routes mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "dns" %}
+                        <i class="mdi mdi-dns-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "share" %}
+                        <i class="mdi mdi-file-tree-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "database" %}
+                        <i class="mdi mdi-database-outline mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% elif group.slug == "rating" %}
+                        <i class="mdi mdi-credit-card-multiple mdi-24px" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% else %}
+                        <i class="fas fa-genderless" aria-hidden="true"></i> <span>{{ group.name }}</span>
+                        {% endif %}
+                      </a>
+                      <ul id="sidebar-drawer-{{ dashboard.slug }}-{{ group.slug }}"
+                          class="ml-menu">
+                  {% endif %}
+                  {% for panel in filtered_panels %}
+                    <li {% if current.slug == dashboard.slug and current_panel == panel.slug %} class="active" {% endif %}>
+                      <a class="openstack-spin" href="{{ panel.get_absolute_url }}"
+                         target="_self"
+                         tabindex="{{ forloop.counter }}" >
+                        {% if panel.slug == "overview" %}
+                        <i class="fa fa-binoculars fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "images" %}
+                        <i class="fa fa-compact-disc fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "key_pairs" %}
+                        <i class="mdi mdi-shield-key-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "server_groups" %}
+                        <i class="fa fa-object-group fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "instances" %}
+                        <i class="fa fa-layer-group fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "volumes" %}
+                        <i class="fa fa-boxes fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "snapshots" %}
+                        <i class="mdi mdi-camera-plus-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "volume_groups" %}
+                        <i class="mdi mdi-dots-hexagon mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "vg_snapshots" %}
+                        <i class="mdi mdi-image-multiple mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "network_topology" %}
+                        <i class="fa fa-sitemap fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "networks" %}
+                        <i class="fa fa-network-wired fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "routers" %}
+                        <i class="mdi mdi-router mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "security_groups" %}
+                        <i class="fa fa-shield-alt fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "floating_ips" %}
+                        <i class="fa fa-crosshairs fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "containers" %}
+                        <i class="fa fa-glass-whiskey fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "flavors" %}
+                        <i class="fa fa-pizza-slice fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "hypervisors" %}
+                        <i class="fa fa-server fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "aggregates" %}
+                        <i class="fa fa-cubes fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "volume_types" %}
+                        <i class="far fa-object-group fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "group_types" %}
+                        <i class="fa fa-cubes fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "rbac_policies" %}
+                        <i class="fa fa-user-shield fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "defaults" %}
+                        <i class="fa fa-solar-panel fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "metadata_defs" %}
+                        <i class="far fa-file-alt fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "info" %}
+                        <i class="far fa-question-circle fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "domains" %}
+                        <i class="fa fa-globe fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "projects" %}
+                        <i class="fa fa-tasks fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "users" %}
+                        <i class="fa fa-user fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "groups" %}
+                        <i class="fa fa-users-cog fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "roles" %}
+                        <i class="fa fa-user-tag fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "application_credentials" %}
+                        <i class="fa fa-id-card fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "api_access" %}
+                        <i class="fa fa-user-check fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "user" %}
+                        <i class="fa fa-user-cog fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "password" %}
+                        <i class="fa fa-fingerprint fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "backups" %}
+                        <i class="mdi mdi-content-save-settings-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "dnszones" %}
+                        <i class="mdi mdi-web mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "reverse_dns" %}
+                        <i class="mdi mdi-backburger mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "orchestration" %}
+                        <i class="mdi mdi-routes mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "stacks" %}
+                        <i class="mdi mdi-layers-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "resource_types" %}
+                        <i class="mdi mdi-animation mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "template_versions" %}
+                        <i class="mdi mdi-text-box-multiple mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "template_generator" %}
+                        <i class="mdi mdi-text-box-plus-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "shares" %}
+                        <i class="mdi mdi-folder-table-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_snapshots" %}
+                        <i class="mdi mdi-folder-image mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_networks" %}
+                        <i class="mdi mdi-folder-network-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "security_services" %}
+                        <i class="mdi mdi-security-network mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_groups" %}
+                        <i class="mdi mdi-table-network mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_group_snapshots" %}
+                        <i class="mdi mdi-folder-multiple-image mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_types" %}
+                        <i class="mdi mdi-folder-cog-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_servers" %}
+                        <i class="mdi mdi-server-network mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_instances" %}
+                        <i class="mdi mdi-layers mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "share_group_types" %}
+                        <i class="mdi mdi-select-group mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "rating" %}
+                        <i class="mdi mdi-star-box-multiple-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "reporting" %}
+                        <i class="mdi mdi-file-chart mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "databases" %}
+                        <i class="mdi mdi-layers-triple-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "database_backups" %}
+                        <i class="mdi mdi-database-check-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "database_clusters" %}
+                        <i class="mdi mdi-database-settings-outline mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% elif panel.slug == "database_configurations" %}
+                        <i class="mdi mdi-table-cog mdi-18px" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% else %}
+                        <i class="fas fa-genderless fa-1x" aria-hidden="true"></i> <span>{{ panel.name }}</span>
+                        {% endif %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {% if group.name %}
+                      </ul>
+                    </li>
+                  {% endif %}
+                {% endif %}
+              {% endwith %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

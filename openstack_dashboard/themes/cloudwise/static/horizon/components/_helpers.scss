@@ -1,0 +1,182 @@
+.margin-0 {
+  margin: 0;
+}
+
+.form-inline .form-control,
+.table_actions .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+.form-group .password-icon {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.transfer-table .transfer-heading {
+  font-size: 18px;
+}
+
+.form-control-feedback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 32.5px;
+  height: 32.5px;
+  line-height: 32.5px;
+  text-align: center;
+  pointer-events: none;
+}
+
+@for $m from -25 through 25 {
+  .m-l-#{$m * 5} {
+    margin-left: #{$m * 5}px;
+  }
+
+  .m-t-#{$m * 5} {
+    margin-top: #{$m * 5}px;
+  }
+
+  .m-r-#{$m * 5} {
+    margin-right: #{$m * 5}px;
+  }
+
+  .m-b-#{$m * 5} {
+    margin-bottom: #{$m * 5}px;
+  }
+}
+
+@for $p from 0 through 25 {
+  .p-l-#{$p * 5} {
+    padding-left: #{$p * 5}px;
+  }
+
+  .p-t-#{$p * 5} {
+    padding-top: #{$p * 5}px;
+  }
+
+  .p-r-#{$p * 5} {
+    padding-right: #{$p * 5}px;
+  }
+
+  .p-b-#{$p * 5} {
+    padding-bottom: #{$p * 5}px;
+  }
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+@for $i from 5 through 49 {
+  .font-#{$i + 1} {
+    font-size: #{$i + 1}px;
+  }
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.font-underline {
+  text-decoration: underline;
+}
+
+.font-line-through {
+  text-decoration: line-through;
+}
+
+.font-overline {
+  text-decoration: overline;
+}
+
+.block-header {
+  margin-bottom: 15px;
+
+  h2 {
+    margin: 0 !important;
+    color: #666 !important;
+    font-weight: normal;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    small {
+      display: block;
+      font-size: 12px;
+      margin-top: 8px;
+      color: #888;
+
+      a {
+        font-weight: bold;
+        color: #777;
+      }
+    }
+  }
+
+  h1 {
+    margin: 0 !important;
+    color: #666 !important;
+    font-weight: normal;
+    font-size: 22px;
+    text-transform: uppercase;
+
+    small {
+      display: block;
+      font-size: 12px;
+      margin-top: 8px;
+      color: #888;
+
+      a {
+        font-weight: bold;
+        color: #777;
+      }
+    }
+  }
+}
+
+@each $key, $val in $colors {
+  .bg-#{$key} {
+    background-color: $val !important;
+    color: #fff;
+
+    .content {
+      .text,
+      .number {
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+@each $key, $val in $colors {
+  .col-#{$key} {
+    color: $val !important;
+  }
+}

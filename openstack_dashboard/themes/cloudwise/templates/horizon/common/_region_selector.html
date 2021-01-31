@@ -1,0 +1,24 @@
+{% load i18n %}
+
+{% if regions.support %}
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" role="button">
+  <i class="mdi mdi-office-building-marker mdi-24px"></i>
+</a>
+<ul id="region_list" class="dropdown-menu dropdown-menu-right">
+  <li class="dropdown-header"><i class="mdi mdi-office-building-marker mdi-18px"></i> {% trans "Regions" %}</li>
+  <li>
+    <a href="#">
+      <i class="mdi mdi-check-circle mdi-24px"></i> {{ regions.current.name }}
+    </span>
+  </li>
+  {% for region in regions.available %}
+  {% if region.name != regions.current.name %}
+  <li>
+    <a class="ajax-modal" href="{% url 'login' %}?region={{ region.endpoint|urlencode }}&is_modal">
+      <i class="mdi mdi-map-marker-path mdi-24px"></i> {{ region.name }}
+    </a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

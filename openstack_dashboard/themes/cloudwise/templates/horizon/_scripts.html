@@ -1,0 +1,8 @@
+{% extends 'horizon/_scripts.html' %}
+{% load compress %}
+
+{% block custom_js_files %}
+<script src='{{ STATIC_URL }}themes/cloudwise/vendors/node-waves/waves.min.js'></script>
+<script src='{{ STATIC_URL }}themes/cloudwise/js/jquery-knob/jquery.knob.min.js'></script>
+<script src='{{ STATIC_URL }}themes/cloudwise/js/cloudwise.js'></script>
+{% endblock %}
