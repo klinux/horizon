@@ -25,8 +25,8 @@ image: ## horizon prod
 git: # create tag
 	git push --delete origin 18.6.1 || true
 	git add .
-	git commit -m "Final release cloudwise"
-	git push
-	git tag -a 18.6.1 -m "Update theme"
-	git push origin 18.6.1
+	git commit -m "Final release cloudwise" || true
+	git push || true
+	git tag -a 18.6.1 -m "Update theme" || true
+	git push origin 18.6.1 || true
 	git tag -d 18.6.1 || true
