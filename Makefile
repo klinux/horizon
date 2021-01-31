@@ -29,4 +29,4 @@ git: # create tag
 	git push
 	git tag -a 18.6.1 -m "Update theme"
 	git push origin 18.6.1
-	git tag -d 18.6.1
+	git tag -d 18.6.1 || true
