@@ -10,7 +10,7 @@ RUN yum upgrade -y
 
 RUN yum install epel-release -y && \
     yum install -y \
-    httpd httpd-devel python3-pip python3-devel git-core gcc openssl-devel libffi-devel which pkg-config gettext
+    httpd httpd-devel python3-pip python3-devel git-core gcc openssl-devel libffi-devel which pkg-config gettext redhat-rpm-config
 
 # Libs infra
 RUN pip3 install --upgrade pip && \
@@ -33,8 +33,7 @@ RUN git clone --branch 18.6.1 --depth 1 https://github.com/klinux/horizon.git ${
 COPY local_settings.py ${HORIZON_BASEDIR}/openstack_dashboard/local/local_settings.py
 
 # Modules
-RUN pip3 install django_compressor==2.4 && \
-    pip3 install csscompressor && \
+RUN pip3 install csscompressor && \
     pip3 install heat-dashboard==4.0.0 && \
     pip3 install python-heatclient==2.2.1 && \
     pip3 install designate-dashboard==11.0.0 && \
@@ -53,7 +52,7 @@ RUN cp /usr/local/lib/python3.6/site-packages/manila_ui/local/enabled/_[0-9]*.py
     cp /usr/local/lib/python3.6/site-packages/cloudkittydashboard/enabled/_[0-9]*.py /opt/horizon/openstack_dashboard/local/enabled/
 
 # Patchs
-RUN sed -i 's/return \[{\"net-id\"\:\ netid,\ \"v4-fixed-ip\"\:\ \"\"}/return\ \[{\"net-id\":\ netid}/g' /usr/local/lib/python3.6/site-packages/trove_dashboard/content/databases/workflows/create_instance.py
+#RUN sed -i 's/return \[{\"net-id\"\:\ netid,\ \"v4-fixed-ip\"\:\ \"\"}/return\ \[{\"net-id\":\ netid}/g' /usr/local/lib/python3.6/site-packages/trove_dashboard/content/databases/workflows/create_instance.py
 
 RUN python3 manage.py compilemessages && \
     python3 manage.py collectstatic --noinput && \
@@ -70,7 +69,7 @@ RUN rm -rf /etc/httpd/conf.d/* && \
     sed -i '/ErrorLog/c\    ErrorLog \/dev\/stderr' /etc/httpd/conf/httpd.conf && \
     mod_wsgi-express install-module > /etc/httpd/conf.modules.d/10-wsgi.conf
 
-RUN yum remove -y httpd-devel python3-devel git-core gcc openssl-devel libffi-devel
+RUN yum remove -y httpd-devel python3-devel git-core gcc openssl-devel libffi-devel redhat-rpm-config
 
 COPY apache/mod_deflate.conf /etc/httpd/conf.d/mod_deflate.conf
 

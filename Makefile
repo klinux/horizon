@@ -18,7 +18,7 @@ stop: ## stop hom
 	docker-compose -f docker-compose-dev.yaml down
 
 image: ## horizon prod
-	docker build --rm --no-cache -t horizon-cloudwise:${VERSION} .
+	docker build --rm  -t horizon-cloudwise:${VERSION} .
 	docker tag horizon-cloudwise:${VERSION} klinux/horizon:${VERSION}
 	docker push klinux/horizon:${VERSION}
 
