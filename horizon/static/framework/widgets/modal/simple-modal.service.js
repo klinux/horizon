@@ -72,6 +72,7 @@
       if (params && params.title && params.body) {
         var options = {
           backdrop: 'static',
+          size: 'lg',
           controller: 'SimpleModalController as modalCtrl',
           templateUrl: path + 'modal/simple-modal.html',
           resolve: {
