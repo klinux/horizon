@@ -14,7 +14,7 @@ OPENSTACK_HOST = "192.168.0.100"
 OPENSTACK_API_VERSIONS = {
     "identity": 3,
     "image": 2,
-    "volume": 2,
+    "volume": 3,
     "compute": 2,
 }
 

@@ -24,9 +24,8 @@ WORKDIR ${HORIZON_BASEDIR}
 # Policies
 RUN mkdir /etc/openstack-dashboard && chmod -R 755 /etc/openstack-dashboard
 
-COPY policies/keystone_policy.json /etc/openstack-dashboard/keystone_policy.json
+COPY policies/ /etc/openstack-dashboard/
 
-RUN echo 10
 
 # Build
 RUN git clone --branch 18.6.1 --depth 1 https://github.com/klinux/horizon.git ${HORIZON_BASEDIR} && \
